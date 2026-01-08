@@ -22,9 +22,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
   const isHome = currentPage === 'home';
   const navClass = scrolled || !isHome || mobileMenuOpen
-    ? 'bg-off-white/95 backdrop-blur-md shadow-sm border-b border-navy/5' 
+    ? 'bg-off-white/95 backdrop-blur-md shadow-sm border-b border-navy/5'
     : 'bg-transparent';
-  
+
   const textClass = scrolled || !isHome || mobileMenuOpen ? 'text-navy' : 'text-white';
 
   const handleNavClick = (id: string) => {
@@ -34,11 +34,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 px-6 py-6 md:px-12 flex justify-between items-center ${navClass}`}>
-      <div 
-        onClick={() => handleNavClick('home')} 
+      <div
+        onClick={() => handleNavClick('home')}
         className={`font-serif text-2xl font-bold tracking-[2px] uppercase cursor-pointer z-50 ${textClass}`}
       >
-        Alta California
+        Bosques California
       </div>
 
       {/* Desktop Menu */}
@@ -56,8 +56,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
       </ul>
 
       {/* Mobile Hamburger */}
-      <button 
-        className={`md:hidden z-50 ${textClass}`} 
+      <button
+        className={`md:hidden z-50 ${textClass}`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       >
         {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
       {/* Mobile Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

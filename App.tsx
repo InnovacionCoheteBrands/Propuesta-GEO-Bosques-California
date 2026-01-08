@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -10,6 +10,7 @@ import Gallery from './components/Pages/Gallery';
 import Location from './components/Pages/Location';
 import { ContactPage, ReferralPage } from './components/Pages/Forms';
 import ChatWidget from './components/Chat/ChatWidget';
+import IntroOverlay from './components/Layout/IntroOverlay';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Register GSAP Plugin outside of component to avoid re-registration
@@ -18,6 +19,14 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const lenisRef = useRef<Lenis | null>(null);
+
+  // Force scroll to top on mount/reload
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   // Initialize Lenis and Sync with GSAP
   useEffect(() => {
@@ -29,7 +38,7 @@ function App() {
       smoothWheel: true,
       touchMultiplier: 2,
     });
-    
+
     lenisRef.current = lenis;
 
     // Synchronize Lenis with ScrollTrigger
@@ -53,14 +62,14 @@ function App() {
   // Handle Page Navigation with Scroll Reset and Trigger Refresh
   const handleNavigate = (page: string) => {
     if (page === currentPage) return;
-    
+
     // Scroll to top immediately to prevent layout shifts
     if (lenisRef.current) {
-        lenisRef.current.scrollTo(0, { immediate: true });
+      lenisRef.current.scrollTo(0, { immediate: true });
     } else {
-        window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
     }
-    
+
     setCurrentPage(page);
   };
 
@@ -68,53 +77,64 @@ function App() {
   // This ensures new DOM elements are calculated correctly
   useEffect(() => {
     const timer = setTimeout(() => {
-        ScrollTrigger.refresh();
+      ScrollTrigger.refresh();
     }, 1000); // Allow time for exit/enter animations to complete
-    
+
     return () => clearTimeout(timer);
   }, [currentPage]);
 
+  // Intro Logic
+  const [showIntro, setShowIntro] = useState(true); // Forced true for dev/review
+
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    // sessionStorage.setItem('hasVisited', 'true'); // Disabled for testing
+  };
+
   const renderPage = () => {
     switch (currentPage) {
-      case 'home': return <Home onNavigate={handleNavigate} />;
+      case 'home': return <Home onNavigate={handleNavigate} isIntroPlaying={showIntro} />; // Pass prop for sync
       case 'modelos': return <Models />;
       case 'galeria': return <Gallery />;
       case 'ubicacion': return <Location />;
       case 'refiere': return <ReferralPage />;
       case 'contacto': return <ContactPage />;
-      default: return <Home onNavigate={handleNavigate} />;
+      default: return <Home onNavigate={handleNavigate} isIntroPlaying={showIntro} />;
     }
   };
 
   return (
     <div className="antialiased text-text-main selection:bg-gold selection:text-white w-full min-h-screen overflow-x-hidden">
       <CustomCursor />
-      
+
+      {showIntro && (
+        <React.Suspense fallback={null}>
+          <IntroOverlay onComplete={handleIntroComplete} />
+        </React.Suspense>
+      )}
+
       <Navbar onNavigate={handleNavigate} currentPage={currentPage} />
 
       {/* Page Transition Wrapper */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="min-h-screen w-full"
+          // Radial reveal logic
+          // Initial: Closed circle (hidden)
+          // Animate: Open circle (reveal)
+          // Exit: Fade out to let next page 'open'
+          initial={{ clipPath: 'circle(0% at 50% 50%)' }}
+          animate={{
+            clipPath: 'circle(150% at 50% 50%)',
+            transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] }
+          }}
+          exit={{ opacity: 1 }} // We keep it visible while mask closes or new one opens? Actually, better to just let new one open ON TOP.
+          className="min-h-screen w-full relative z-[10]"
+          style={{ backgroundColor: 'var(--off-white)' }} // Ensure background to cover previous page
         >
           {renderPage()}
         </motion.div>
       </AnimatePresence>
-
-      {/* Wipe Transition Effect */}
-      <motion.div
-        key={`wipe-${currentPage}`}
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        exit={{ scaleY: 1 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-0 bg-navy z-[9998] origin-top pointer-events-none"
-      />
 
       <ChatWidget />
     </div>
