@@ -1,0 +1,105 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Arial",
+      "count": 103
+    },
+    {
+      "family": "sans-serif",
+      "count": 103
+    },
+    {
+      "family": "Open Sans",
+      "count": 93
+    },
+    {
+      "family": "Raleway",
+      "count": 10
+    },
+    {
+      "family": "Helvetica",
+      "count": 10
+    },
+    {
+      "family": "Lucida",
+      "count": 10
+    }
+  ],
+  "colors": {
+    "primary": "#EBB37D",
+    "accent": "#2098D1",
+    "background": "#FFFFFF",
+    "textPrimary": "#000000",
+    "link": "#2098D1"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Open Sans",
+      "heading": "Raleway"
+    },
+    "fontStacks": {
+      "body": [
+        "Open Sans",
+        "Arial",
+        "sans-serif"
+      ],
+      "heading": [
+        "Raleway",
+        "Helvetica",
+        "Arial",
+        "Lucida",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Raleway",
+        "Helvetica",
+        "Arial",
+        "Lucida",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "35px",
+      "h2": "33px",
+      "body": "60px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "3px"
+  },
+  "components": {
+    "input": {
+      "background": "#FFFFFF",
+      "textColor": "#808080",
+      "borderColor": null,
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://bosquescalifornia.com/wp-content/uploads/2025/07/bosques-california-logo.webp",
+    "favicon": "https://bosquescalifornia.com/wp-content/uploads/2025/05/cropped-bosques-california-favicon-32x32.webp",
+    "ogImage": null
+  },
+  "__framework_hints": [
+    "Divi v.4.27.4"
+  ],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Strong indicators: header logo linking to homepage, header location, visible, highest logo on page, src contains logo, class contains logo, alt exactly matches brand name \"Bosques California\", reasonable size. Score: 132 (clear winner by 67 points)",
+    "confidence": 0.9
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
