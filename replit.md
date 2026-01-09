@@ -5,10 +5,18 @@ A luxury real estate website for Bosques California residential development in T
 
 ## Tech Stack
 - **Frontend**: React 19, TypeScript
-- **Build Tool**: Vite 6
+- **Build Tool**: Vite 6.0.8
 - **Styling**: Tailwind CSS (via CDN)
 - **Animations**: GSAP, Framer Motion, Lenis (smooth scroll)
 - **AI Integration**: Google Gemini API (for chat widget)
+
+## Branding (aligned with bosquescalifornia.com)
+- **Primary Gold**: #EBB37D
+- **Accent Blue**: #2098D1
+- **Background**: #FFFFFF (white)
+- **Text**: #000000 (black)
+- **Heading Font**: Raleway
+- **Body Font**: Open Sans
 
 ## Project Structure
 ```
