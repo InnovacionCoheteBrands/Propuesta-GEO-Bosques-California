@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import PrequalifierForm from '../Forms/PrequalifierForm';
 
 // Generic Form Component
-const FormContainer: React.FC<{
+export const FormContainer: React.FC<{
     title: string;
     subtitle?: string;
     fields: { name: string; placeholder: string; type?: string }[];
     btnText: string;
     formId: string;
-}> = ({ title, subtitle, fields, btnText, formId }) => {
+    dark?: boolean; // Added prop for dark background support
+}> = ({ title, subtitle, fields, btnText, formId, dark }) => {
 
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -36,9 +38,9 @@ const FormContainer: React.FC<{
     }
 
     return (
-        <div className="bg-white p-8 md:p-12 rounded-xl shadow-2xl border border-gray-50">
-            <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4">{title}</h2>
-            {subtitle && <p className="text-gray-500 mb-8 font-light">{subtitle}</p>}
+        <div className={`h-full flex flex-col justify-center ${dark ? 'bg-transparent p-0 shadow-none border-none' : 'bg-white p-12 md:p-16 rounded-3xl shadow-2xl border border-gray-50'}`}>
+            <h2 className={`font-serif text-3xl md:text-4xl mb-4 ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>
+            {subtitle && <p className={`${dark ? 'text-white/60' : 'text-gray-500'} mb-8 font-light`}>{subtitle}</p>}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 {fields.map((f, i) => (
@@ -48,7 +50,7 @@ const FormContainer: React.FC<{
                         type={f.type || "text"}
                         name={f.name}
                         placeholder={f.placeholder}
-                        className="w-full border-b border-gray-200 py-3 bg-transparent focus:outline-none focus:border-gold transition-colors font-light text-navy placeholder:text-gray-300"
+                        className={`w-full border-b py-3 bg-transparent focus:outline-none transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/30 focus:border-gold' : 'border-gray-200 text-navy placeholder:text-gray-300 focus:border-gold'}`}
                     />
                 ))}
                 <button
@@ -64,24 +66,33 @@ const FormContainer: React.FC<{
 
 export const ContactPage: React.FC = () => (
     <div className="pt-32 pb-24 min-h-screen bg-off-white flex items-center justify-center px-6">
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl w-full items-center">
-            <div>
-                <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2 block">Contacto</span>
-                <h1 className="font-serif text-5xl md:text-7xl text-navy mb-6">Hablemos</h1>
-                <p className="text-gray-600 text-lg mb-8">Estamos listos para asesorarte en la mejor inversión de tu vida.</p>
-                <div className="text-2xl font-serif text-navy">33 1071 0957</div>
-                <div className="text-gray-400 mt-2">contacto@bosquescalifornia.com</div>
+        <div className="flex flex-col gap-12 max-w-7xl w-full">
+            {/* Info Header */}
+            <div className="w-full bg-navy text-white p-8 md:p-12 rounded-3xl shadow-xl">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                    <div>
+                        <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2 block">Contacto</span>
+                        <h1 className="font-serif text-4xl md:text-5xl mb-4">Hablemos</h1>
+                        <p className="text-white/60 text-lg max-w-lg leading-relaxed">Estamos listos para asesorarte en la mejor inversión de tu vida a través de nuestro proceso de pre-calificación exclusivo.</p>
+                    </div>
+
+                    <div className="flex flex-col md:items-end gap-4 text-right">
+                        <div>
+                            <span className="block text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Llámanos</span>
+                            <span className="text-2xl font-serif">33 1071 0957</span>
+                        </div>
+                        <div>
+                            <span className="block text-[10px] uppercase tracking-widest text-gold font-bold mb-1">Escríbenos</span>
+                            <span className="text-white/80">contacto@bosquescalifornia.com</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <FormContainer
-                title="Envíanos un mensaje"
-                btnText="Solicitar Información"
-                formId="YOUR_FORMSPREE_ID" // Placeholder
-                fields={[
-                    { name: "name", placeholder: "Nombre Completo" },
-                    { name: "email", placeholder: "Correo Electrónico", type: "email" },
-                    { name: "phone", placeholder: "Teléfono" }
-                ]}
-            />
+
+            {/* Form Section */}
+            <div className="w-full">
+                <PrequalifierForm />
+            </div>
         </div>
     </div>
 );

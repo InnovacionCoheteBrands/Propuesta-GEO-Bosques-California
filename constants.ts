@@ -10,40 +10,80 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const HOUSE_MODELS: HouseModel[] = [
   {
+    id: 'cipres',
+    name: 'Ciprés',
+    description: 'Diseño inteligente en 125.49 m². La opción ideal para iniciar una nueva vida con jardín privado, vestidor y todas las amenidades.',
+    bgText: 'CIPRÉS',
+    specs: [
+      { label: 'Construcción', value: '125.49 m²' },
+      { label: 'Terreno', value: '96.00 m²' },
+      { label: 'Recámaras', value: '3' },
+      { label: 'Baños', value: '2.5' },
+    ],
+    image: '/assets/renders/cipres.png',
+    gallery: [
+      { src: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f8e?q=80&w=1200', label: 'Fachada Ciprés' },
+      { src: 'https://images.unsplash.com/photo-1584622640111-994a426fbf0a?q=80&w=1200', label: 'Sala Comedor' },
+      { src: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=1200', label: 'Cocina equipada' },
+      { src: 'https://images.unsplash.com/photo-1595246140625-573b715d11f3?q=80&w=1200', label: 'Recámaras Amplias' },
+    ]
+  },
+  {
     id: 'roble-a',
     name: 'Roble A',
-    description: 'Espacios optimizados con acabados de lujo y diseño funcional.',
+    description: 'El equilibrio perfecto entre funcionalidad y elegancia. Espacios diseñados con 140.55 m² de construcción, cochera para 2 autos y una planta alta optimizada.',
     bgText: 'ROBLE A',
     specs: [
       { label: 'Construcción', value: '140.55 m²' },
       { label: 'Recámaras', value: '3' },
-      { label: 'Baños', value: '2.5' },
+      { label: 'Baños', value: '3.5' },
     ],
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200'
+    image: '/assets/renders/roble-a.png',
+    gallery: [
+      { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200', label: 'Fachada Principal' },
+      { src: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1200', label: 'Sala de Estar Moderna' },
+      { src: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200', label: 'Cocina Integral de Lujo' },
+      { src: 'https://images.unsplash.com/photo-1554995207-c18c20360a59?q=80&w=1200', label: 'Recámara Principal' },
+      { src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200', label: 'Terraza Privada' },
+    ]
   },
   {
     id: 'roble-b',
     name: 'Roble B',
-    description: 'Amplitud y elegancia en cada detalle para tu familia.',
+    description: 'Una evolución del confort con 143.56 m² de construcción. Área social ampliada y habitaciones diseñadas para la privacidad y el descanso.',
     bgText: 'ROBLE B',
     specs: [
       { label: 'Construcción', value: '143.56 m²' },
       { label: 'Recámaras', value: '3' },
-      { label: 'Baños', value: '2.5' },
+      { label: 'Baños', value: '3.5' },
     ],
-    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1200'
+    image: '/assets/renders/roble-b.png',
+    gallery: [
+      { src: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1200', label: 'Fachada Contemporánea' },
+      { src: 'https://images.unsplash.com/photo-1600585154542-6379b7226191?q=80&w=1200', label: 'Espacios Abiertos' },
+      { src: 'https://images.unsplash.com/photo-1556909212-d5b604bc9295?q=80&w=1200', label: 'Cocina de Especialidad' },
+      { src: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1200', label: 'Suite Principal' },
+      { src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200', label: 'Jardín Interior' },
+    ]
   },
   {
     id: 'secuoya',
     name: 'Secuoya',
-    description: 'El modelo más imponente con espacios premium y confort total.',
+    description: 'Nuestra propuesta más imponente con 173.90 m². Excelencia arquitectónica en gran formato con acabados premium y espacios generosos.',
     bgText: 'SECUOYA',
     specs: [
       { label: 'Construcción', value: '173.90 m²' },
       { label: 'Recámaras', value: '3' },
-      { label: 'Baños', value: '2.5' },
+      { label: 'Baños', value: '3.5' },
     ],
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200'
+    image: '/assets/renders/secuoya.png',
+    gallery: [
+      { src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200', label: 'Residencia Secuoya' },
+      { src: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200', label: 'Gran Estancia' },
+      { src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200', label: 'Cocina Gourmet' },
+      { src: 'https://images.unsplash.com/photo-1560448204-61dc36dc98c8?q=80&w=1200', label: 'Master Suite' },
+      { src: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200', label: 'Terraza y Deck' },
+    ]
   }
 ];
 

@@ -2,7 +2,9 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { HOUSE_MODELS, AMENITIES } from '../../constants';
-import { Shield, Home as HomeIcon } from 'lucide-react';
+import { Shield, Home as HomeIcon, Phone, Mail, MapPin, ArrowDown } from 'lucide-react';
+import { FormContainer } from './Forms';
+import PrequalifierForm from '../Forms/PrequalifierForm';
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -70,17 +72,25 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         if (horizontalRef.current) {
           const sections = gsap.utils.toArray<HTMLElement>(".horizontal-panel");
 
-          gsap.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
+          const tl = gsap.timeline({
             id: "horizontalTween",
             scrollTrigger: {
               trigger: horizontalRef.current,
               pin: true,
               scrub: 1,
-              end: () => "+=" + horizontalRef.current!.offsetWidth * (sections.length - 1)
+              // Add extra scroll distance for the pause (half screen width)
+              end: () => "+=" + (horizontalRef.current!.offsetWidth * (sections.length - 1) + window.innerWidth * 0.5)
             }
           });
+
+          tl.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            duration: sections.length - 1
+          });
+
+          // Static pause at the end
+          tl.to({}, { duration: 0.5 });
 
           // Card Scaling Effect on Scroll
           sections.forEach((section) => {
@@ -162,7 +172,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         <div ref={heroImgContainerRef} className="absolute inset-0 z-0 bg-off-white">
           <img
             ref={heroImgRef}
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2000"
+            src="/assets/renders/hero.png"
             className="w-full h-full object-cover scale-110"
             alt="Luxury Architecture"
           />
@@ -200,7 +210,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
             </div>
           </div>
 
-          {/* Model Panels */}
+          {/* Model Panels - Showcase ONLY Ciprés (Budget) and Roble A */}
           {HOUSE_MODELS.slice(0, 2).map((model) => (
             <div key={model.id} className="horizontal-panel w-full md:w-screen h-screen flex items-center justify-center px-4 md:px-20 bg-off-white relative flex-shrink-0 border-t md:border-t-0 border-gray-100">
               <span className="absolute text-[15vw] md:text-[20vw] font-serif text-navy/5 font-bold pointer-events-none z-0 select-none">
@@ -223,12 +233,18 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
           ))}
 
           {/* CTA Panel */}
-          <div className="horizontal-panel w-full md:w-screen h-[50vh] md:h-screen flex items-center justify-center bg-off-white flex-shrink-0">
+          <div className="horizontal-panel w-full md:w-screen h-[50vh] md:h-screen flex items-center justify-center bg-off-white flex-shrink-0 relative">
             <div className="text-center">
               <h3 className="font-serif text-4xl text-navy mb-6">¿Quieres ver más?</h3>
               <button onClick={() => onNavigate('modelos')} className="bg-gold text-white px-12 py-4 rounded-full uppercase tracking-widest font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
                 Catálogo Completo
               </button>
+            </div>
+
+            {/* Scroll Indicator Arrow */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-navy/40 animate-bounce flex flex-col items-center gap-2">
+              <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
+              <ArrowDown size={32} />
             </div>
           </div>
         </div>
@@ -238,7 +254,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
       <section className="amenities-container relative bg-off-white">
         <div className="flex flex-col md:flex-row min-h-screen px-6 md:px-12 gap-12 py-24">
           <div className="md:w-1/3 md:sticky md:top-32 h-fit z-20">
-            <span className="text-gold uppercase tracking-widest text-sm font-bold">Estilo de Vida</span>
+            <span className="text-gold uppercase tracking-widest text-xl font-bold">Amenidades</span>
             <h2 className="font-serif text-5xl md:text-6xl text-navy mt-4 mb-6 leading-tight">Espacios que<br />trascienden.</h2>
             <p className="text-gray-600 font-light text-lg">Diseñados para crear armonía y bienestar en el sur de la ciudad.</p>
           </div>
@@ -278,7 +294,55 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               <Shield size={32} />
             </div>
             <h3 className="font-serif text-2xl text-navy mb-3">Plusvalía Asegurada</h3>
-            <p className="text-gray-500 font-light max-w-xs">Ubicación estratégica en Tlajomulco con crecimiento constante.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-16 px-6 bg-off-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="w-full bg-white shadow-2xl rounded-3xl overflow-hidden p-6 md:p-10">
+            <PrequalifierForm />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - GEO Optimized */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-gold uppercase tracking-widest text-sm font-bold">Preguntas Frecuentes</span>
+            <h2 className="font-serif text-4xl md:text-5xl text-navy mt-4">Todo lo que necesitas saber</h2>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                q: "¿Dónde se encuentra ubicado Bosques California?",
+                a: "Bosques California goza de una ubicación estratégica en Tlajomulco de Zúñiga, Jalisco, en una de las zonas con mayor crecimiento y plusvalía del sur de la ciudad."
+              },
+              {
+                q: "¿Qué modelos de casas están disponibles?",
+                a: "Contamos con tres modelos exclusivos: Roble A, Roble B y Secuoya. Cada uno diseñado con una estética californiana contemporánea y espacios optimizados."
+              },
+              {
+                q: "¿Cuáles son las amenidades principales?",
+                a: "Nuestro desarrollo incluye alberca tipo resort, cancha de pádel de primer nivel, gimnasio equipado, dog park, terraza para eventos y seguridad privada 24/7."
+              },
+              {
+                q: "¿Cómo puedo agendar una visita?",
+                a: "Puedes agendar tu cita directamente a través de nuestro formulario de contacto o llamando al 33 1071 0957. ¡Nuestros asesores te esperan!"
+              }
+            ].map((item, i) => (
+              <details key={i} className="group border-b border-gray-100 pb-4 outline-none">
+                <summary className="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy py-4 group-open:text-gold transition-colors">
+                  {item.q}
+                  <span className="text-2xl transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="text-gray-500 font-light leading-relaxed pb-4">
+                  {item.a}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

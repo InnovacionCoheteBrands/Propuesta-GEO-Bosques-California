@@ -15,12 +15,18 @@ export interface ModelSpec {
   value: string;
 }
 
+export interface ModelGalleryImage {
+  src: string;
+  label: string;
+}
+
 export interface HouseModel {
   id: string;
   name: string;
   description: string;
   specs: ModelSpec[];
   image: string;
+  gallery: ModelGalleryImage[];
   bgText: string;
 }
 
@@ -36,4 +42,18 @@ export interface GalleryItem {
   src: string;
   col: number; // For masonry layout column assignment
   speed: number; // Parallax speed factor
+}
+
+export interface PrequalifierData {
+  purpose: string;
+  timeline: string;
+  budget: string;
+  financing: string;
+  previousExperience: string;
+  locationInterest: string;
+  decisionMaker: string;
+  decisionFactor: string;
+  name: string;
+  email: string;
+  phone: string;
 }

@@ -16,8 +16,9 @@ const Location: React.FC = () => {
     ];
 
     return (
-        <div className="h-screen w-full flex flex-col md:flex-row pt-20 md:pt-0">
-            <div className="w-full md:w-1/3 bg-off-white p-8 md:p-16 flex flex-col justify-center relative z-10 shadow-xl">
+        <div className="relative h-screen w-full overflow-hidden">
+            {/* Sidebar con información */}
+            <div className="absolute left-0 top-0 h-full w-full md:w-1/3 bg-off-white/95 backdrop-blur-sm p-8 md:p-16 flex flex-col justify-center z-10 shadow-2xl pt-20 md:pt-0">
                 <h2 className="font-serif text-4xl md:text-5xl text-navy mb-12">Todo a tu<br />alcance</h2>
                 <ul className="space-y-6">
                     {locations.map((loc) => (
@@ -39,9 +40,11 @@ const Location: React.FC = () => {
                     ))}
                 </ul>
             </div>
-            <div className="w-full md:w-2/3 h-[50vh] md:h-full relative">
+
+            {/* Mapa de fondo completo */}
+            <div className="absolute inset-0 w-full h-full z-0">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.601977755331!2d-103.4542866850877!3d20.56345998625219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ad1e89b3f307%3A0xe5a2283a005085d3!2sAlta%20California%20Residencial!5e0!3m2!1ses-419!2smx!4v1677600000000"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3735.8376042007794!2d-103.4733178!3d20.5538244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f55001599fbc1%3A0x367efb52a27b6197!2sBosques%20california!5e0!3m2!1ses-419!2sus!4v1768429023051!5m2!1ses-419!2sus"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1)' }}
@@ -49,10 +52,12 @@ const Location: React.FC = () => {
                     loading="lazy"
                     title="Map"
                 ></iframe>
-                <div className="absolute top-8 right-8 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+
+                {/* Etiqueta flotante del mapa (visible en desktop) */}
+                <div className="absolute top-24 right-8 bg-white/90 backdrop-blur p-4 rounded-lg shadow-lg hidden md:block">
                     <div className="flex items-center gap-2 text-navy">
                         <MapPin className="text-gold" />
-                        <span className="font-bold text-sm">Alta California Residencial</span>
+                        <span className="font-bold text-sm">Bosques California</span>
                     </div>
                 </div>
             </div>
