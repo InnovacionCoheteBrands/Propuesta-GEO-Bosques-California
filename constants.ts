@@ -92,37 +92,37 @@ export const AMENITIES: Amenity[] = [
     id: 'padel',
     title: 'Cancha de Pádel',
     description: 'Disfruta de uno de los deportes de mayor crecimiento en instalaciones de primer nivel.',
-    image: 'https://images.unsplash.com/photo-1626224580194-860c36f6756f?q=80&w=1200'
+    image: '/assets/amenities/padel.png'
   },
   {
     id: 'pool',
     title: 'Alberca Tipo Resort',
     description: 'Relájate y disfruta el lujo en una alberca diseñada para tu descanso total.',
-    image: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=1200'
+    image: '/assets/amenities/pool.png'
   },
   {
     id: 'gym',
     title: 'Gimnasio Equipado',
     description: 'Todo lo necesario para mantener tu estilo de vida saludable sin salir de casa.',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200'
+    image: '/assets/amenities/gym.png'
   },
   {
     id: 'terraza',
     title: 'Terraza para Eventos',
     description: 'El espacio ideal para celebraciones y momentos especiales con amigos y familia.',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1200'
+    image: '/assets/amenities/terraza.png'
   },
   {
     id: 'dog-park',
     title: 'Dog Park',
     description: 'Un espacio seguro y divertido diseñado especialmente para tus mascotas.',
-    image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200'
+    image: '/assets/amenities/dog-park.png'
   },
   {
     id: 'seguridad',
     title: 'Acceso Controlado 24/7',
     description: 'Tu tranquilidad es nuestra prioridad con vigilancia y tecnología de punta.',
-    image: 'https://images.unsplash.com/photo-1557597774-9d2739f85a76?q=80&w=1200'
+    image: '/assets/amenities/seguridad.png'
   }
 ];
 
