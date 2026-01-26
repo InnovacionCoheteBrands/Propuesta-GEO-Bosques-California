@@ -46,10 +46,9 @@ export interface GalleryItem {
 
 export interface PrequalifierData {
   purpose: string;
-  timeline: string;
   budget: string;
   financing: string;
-  previousExperience: string;
+  contactPreference: string;
   locationInterest: string;
   decisionMaker: string;
   decisionFactor: string;

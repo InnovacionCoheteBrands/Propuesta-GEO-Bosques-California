@@ -131,7 +131,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
           end: () => `+=${amenityCards.length * 100}%`,
           pin: true,
           scrub: 1,
-          // anticipatePin removed to prevent jitter
           animation: gsap.timeline()
             .to(amenityCards.slice(1), {
               yPercent: 0,
@@ -172,7 +171,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         <div ref={heroImgContainerRef} className="absolute inset-0 z-0 bg-off-white">
           <img
             ref={heroImgRef}
-            src="/assets/renders/hero.png"
+            src="/assets/renders/hero-main.jpg"
             className="w-full h-full object-cover scale-110"
             alt="Luxury Architecture"
           />
@@ -347,7 +346,12 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         </div>
       </section>
 
-      <footer className="bg-navy py-24 text-center text-white">
+      <footer className="bg-navy py-24 text-center text-white flex flex-col items-center">
+        <img
+          src="/assets/logo-bosques.png"
+          alt="Bosques California"
+          className="h-24 w-auto object-contain mb-8 brightness-0 invert"
+        />
         <h2 className="font-serif text-4xl md:text-6xl mb-8">Inicia tu legado</h2>
         <p className="text-sm opacity-50 tracking-widest">BOSQUES CALIFORNIA © {new Date().getFullYear()}</p>
       </footer>
