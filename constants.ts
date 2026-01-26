@@ -57,7 +57,7 @@ export const HOUSE_MODELS: HouseModel[] = [
       { label: 'Recámaras', value: '3' },
       { label: 'Baños', value: '3.5' },
     ],
-    image: '/assets/renders/secuoya.png',
+    image: '/images/model-secuoya.webp',
     gallery: [
       { src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200', label: 'Residencia Secuoya' },
       { src: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200', label: 'Gran Estancia' },
