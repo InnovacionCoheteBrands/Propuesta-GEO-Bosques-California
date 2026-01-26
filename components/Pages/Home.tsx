@@ -84,7 +84,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               pin: true,
               scrub: 1, // Lower scrub for tighter control
               // Scroll distance for comfortable viewing of each model
-              end: () => "+=" + (window.innerWidth * totalSections * 1.2)
+              end: () => "+=" + (window.innerWidth * totalSections * 0.9)
             }
           });
 
