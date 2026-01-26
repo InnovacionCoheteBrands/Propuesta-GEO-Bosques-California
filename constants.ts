@@ -20,7 +20,7 @@ export const HOUSE_MODELS: HouseModel[] = [
       { label: 'Recámaras', value: '3' },
       { label: 'Baños', value: '2.5' },
     ],
-    image: '/assets/renders/cipres.png',
+    image: '/images/model-cipres.webp',
     gallery: [
       { src: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f8e?q=80&w=1200', label: 'Fachada Ciprés' },
       { src: 'https://images.unsplash.com/photo-1584622640111-994a426fbf0a?q=80&w=1200', label: 'Sala Comedor' },
