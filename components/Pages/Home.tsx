@@ -77,9 +77,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
             scrollTrigger: {
               trigger: horizontalRef.current,
               pin: true,
-              scrub: 1,
-              // Add extra scroll distance for the pause (half screen width)
-              end: () => "+=" + (horizontalRef.current!.offsetWidth * (sections.length - 1) + window.innerWidth * 0.5)
+              scrub: 0.8,
+              snap: {
+                snapTo: 1 / (sections.length - 1),
+                duration: { min: 0.2, max: 0.5 },
+                delay: 0.1,
+                ease: "power1.inOut"
+              },
+              end: () => "+=" + (horizontalRef.current!.offsetWidth - window.innerWidth)
             }
           });
 
