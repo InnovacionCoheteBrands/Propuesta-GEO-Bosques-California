@@ -83,8 +83,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               trigger: horizontalRef.current,
               pin: true,
               scrub: 1, // Lower scrub for tighter control
-              // Much longer scroll distance to make it feel slower and allow for pauses
-              end: () => "+=" + (window.innerWidth * totalSections * 1.5)
+              // Scroll distance for comfortable viewing of each model
+              end: () => "+=" + (window.innerWidth * totalSections * 1.2)
             }
           });
 
