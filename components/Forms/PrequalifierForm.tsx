@@ -12,10 +12,9 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
     const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
     const [formData, setFormData] = useState<Partial<PrequalifierData>>({
         purpose: '',
-        timeline: '',
         budget: '',
         financing: '',
-        previousExperience: '',
+        contactPreference: '',
         locationInterest: '',
         decisionMaker: '',
         decisionFactor: '',
@@ -49,8 +48,8 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
     };
 
     const isStepValid = () => {
-        if (step === 1) return formData.purpose && formData.timeline && formData.decisionFactor;
-        if (step === 2) return formData.budget && formData.financing && formData.previousExperience;
+        if (step === 1) return formData.purpose && formData.decisionFactor;
+        if (step === 2) return formData.budget && formData.financing && formData.contactPreference;
         if (step === 3) return formData.name && formData.email && formData.phone && formData.locationInterest && formData.decisionMaker;
         return false;
     };
@@ -110,10 +109,10 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                         >
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    1. ¿Con qué propósito desea adquirir una casa?
+                                    1. ¿Cómo te ves en Bosques California?
                                 </label>
-                                <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-                                    {['Vivir de forma permanente', 'Segunda residencia para mi familia', 'Patrimonio para hijos/familia', 'Solo estoy explorando opciones'].map((opt) => (
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                                    {['Uso de vivienda', 'Segunda residencia para mi familia', 'Inversión'].map((opt) => (
                                         <button
                                             key={opt}
                                             type="button"
@@ -128,25 +127,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
 
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    2. ¿En qué rango de tiempo le gustaría concretar?
-                                </label>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                    {['Dentro de 3 meses', '3 a 6 meses', '6 a 12 meses', 'Más de 12 meses'].map((opt) => (
-                                        <button
-                                            key={opt}
-                                            type="button"
-                                            onClick={() => handleSelectOption('timeline', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.timeline === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
-                                        >
-                                            {opt}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="space-y-3">
-                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    3. ¿Qué factor es determinante para tu decisión?
+                                    2. ¿Qué factor es determinante para tu decisión?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                                     {['Plusvalía e Inversión', 'Seguridad y Privacidad', 'Ubicación y Conectividad', 'Diseño y Espacios'].map((opt) => (
@@ -174,10 +155,10 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                         >
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    4. ¿Cuál es su rango de presupuesto?
+                                    3. ¿Cuál es su rango de presupuesto?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-                                    {['Menos de $5 millones', '$5.0M – $5.8M', '$5.9M – $7.3M', 'Más de $7.3M'].map((opt) => (
+                                    {['Desde 4 Millones', '$5.0M – $5.8M', '$5.9M – $7.3M', 'Más de $7.3M'].map((opt) => (
                                         <button
                                             key={opt}
                                             type="button"
@@ -192,10 +173,10 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
 
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    5. ¿Cómo planea financiar la compra?
+                                    4. ¿Cómo planea financiar la compra?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                    {['Recursos propios (contado)', 'Crédito ya preaprobado', 'Crédito en revisión', 'Sin financiamiento aún'].map((opt) => (
+                                    {['De Contado', 'Crédito ya preaprobado', 'Crédito en revisión', 'Sin financiamiento aún'].map((opt) => (
                                         <button
                                             key={opt}
                                             type="button"
@@ -210,15 +191,15 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
 
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    6. ¿Ha adquirido propiedades anteriormente?
+                                    5. ¿Cómo prefieres ser contactado?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                                    {['Sí, casa habitación', 'Sí, terrenos o locales', 'No, sería mi primera propiedad'].map((opt) => (
+                                    {['WhatsApp', 'Llamada', 'E-Mail'].map((opt) => (
                                         <button
                                             key={opt}
                                             type="button"
-                                            onClick={() => handleSelectOption('previousExperience', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.previousExperience === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
+                                            onClick={() => handleSelectOption('contactPreference', opt)}
+                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.contactPreference === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
                                         >
                                             {opt}
                                         </button>

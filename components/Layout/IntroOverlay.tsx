@@ -22,7 +22,7 @@ const IntroOverlay: React.FC<IntroOverlayProps> = ({ onComplete }) => {
             // 2. Text fades out
             // 3. Notify Complete - Parent handles removal/reveal
 
-            tl.to(".intro-text span", {
+            tl.to(".intro-text img", {
                 y: 0,
                 duration: 1,
                 ease: "expo.out"
@@ -45,9 +45,13 @@ const IntroOverlay: React.FC<IntroOverlayProps> = ({ onComplete }) => {
         >
             <div
                 ref={textRef}
-                className="intro-text font-serif text-3xl md:text-5xl tracking-[8px] uppercase overflow-hidden"
+                className="intro-text flex items-center justify-center overflow-hidden"
             >
-                <span className="block translate-y-full">BOSQUES CALIFORNIA</span>
+                <img
+                    src="/assets/logo-bosques.png"
+                    alt="BOSQUES CALIFORNIA"
+                    className="h-24 md:h-32 w-auto object-contain translate-y-full"
+                />
             </div>
         </div>
     );

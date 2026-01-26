@@ -36,9 +36,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 px-6 py-6 md:px-12 flex justify-between items-center ${navClass}`}>
       <div
         onClick={() => handleNavClick('home')}
-        className={`font-serif text-2xl font-bold tracking-[2px] uppercase cursor-pointer z-50 ${textClass}`}
+        className="cursor-pointer z-50"
       >
-        Bosques California
+        <img
+          src="/assets/logo-bosques.png"
+          alt="Bosques California"
+          className={`h-12 w-auto object-contain transition-all duration-300`}
+        />
       </div>
 
       {/* Desktop Menu */}
