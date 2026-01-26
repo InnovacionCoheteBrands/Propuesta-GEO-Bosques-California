@@ -103,7 +103,7 @@ export const AMENITIES: Amenity[] = [
     id: 'seguridad',
     title: 'Acceso Controlado 24/7',
     description: 'Tu tranquilidad es nuestra prioridad con vigilancia y tecnología de punta.',
-    image: '/assets/amenities/seguridad.png'
+    image: '/images/amenity-security.webp'
   }
 ];
 
