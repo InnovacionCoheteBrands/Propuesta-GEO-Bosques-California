@@ -29,10 +29,10 @@ export const HOUSE_MODELS: HouseModel[] = [
     ]
   },
   {
-    id: 'roble-a',
-    name: 'Roble A',
+    id: 'roble',
+    name: 'Roble',
     description: 'El equilibrio perfecto entre funcionalidad y elegancia. Espacios diseñados con 140.55 m² de construcción, cochera para 2 autos y una planta alta optimizada.',
-    bgText: 'ROBLE A',
+    bgText: 'ROBLE',
     specs: [
       { label: 'Construcción', value: '140.55 m²' },
       { label: 'Recámaras', value: '3' },
@@ -45,25 +45,6 @@ export const HOUSE_MODELS: HouseModel[] = [
       { src: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200', label: 'Cocina Integral de Lujo' },
       { src: 'https://images.unsplash.com/photo-1554995207-c18c20360a59?q=80&w=1200', label: 'Recámara Principal' },
       { src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200', label: 'Terraza Privada' },
-    ]
-  },
-  {
-    id: 'roble-b',
-    name: 'Roble B',
-    description: 'Una evolución del confort con 143.56 m² de construcción. Área social ampliada y habitaciones diseñadas para la privacidad y el descanso.',
-    bgText: 'ROBLE B',
-    specs: [
-      { label: 'Construcción', value: '143.56 m²' },
-      { label: 'Recámaras', value: '3' },
-      { label: 'Baños', value: '3.5' },
-    ],
-    image: '/assets/renders/roble-b.png',
-    gallery: [
-      { src: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1200', label: 'Fachada Contemporánea' },
-      { src: 'https://images.unsplash.com/photo-1600585154542-6379b7226191?q=80&w=1200', label: 'Espacios Abiertos' },
-      { src: 'https://images.unsplash.com/photo-1556909212-d5b604bc9295?q=80&w=1200', label: 'Cocina de Especialidad' },
-      { src: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=1200', label: 'Suite Principal' },
-      { src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200', label: 'Jardín Interior' },
     ]
   },
   {

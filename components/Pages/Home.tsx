@@ -209,8 +209,8 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
             </div>
           </div>
 
-          {/* Model Panels - Showcase ONLY Ciprés (Budget) and Roble A */}
-          {HOUSE_MODELS.slice(0, 2).map((model) => (
+          {/* Model Panels - Showcase all models */}
+          {HOUSE_MODELS.map((model) => (
             <div key={model.id} className="horizontal-panel w-full md:w-screen h-screen flex items-center justify-center px-4 md:px-20 bg-off-white relative flex-shrink-0 border-t md:border-t-0 border-gray-100">
               <span className="absolute text-[15vw] md:text-[20vw] font-serif text-navy/5 font-bold pointer-events-none z-0 select-none">
                 {model.bgText}
