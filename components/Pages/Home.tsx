@@ -171,9 +171,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         <div ref={heroImgContainerRef} className="absolute inset-0 z-0 bg-off-white">
           <img
             ref={heroImgRef}
-            src="/assets/renders/hero-main.jpg"
+            src="/images/hero-cover.webp"
             className="w-full h-full object-cover scale-110"
-            alt="Luxury Architecture"
+            alt="Bosques California - Familia disfrutando la alberca"
           />
           <div className="absolute inset-0 bg-navy/30" />
         </div>
