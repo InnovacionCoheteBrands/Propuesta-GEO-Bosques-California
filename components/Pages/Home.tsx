@@ -71,44 +71,60 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
       mm.add("(min-width: 768px)", () => {
         if (horizontalRef.current) {
           const sections = gsap.utils.toArray<HTMLElement>(".horizontal-panel");
+          const totalSections = sections.length;
+
+          // We want a clear pause at each item.
+          // Strategy: Manually build the timeline steps.
+          // 0 -> 1 (Move), 1 (Wait), 1 -> 2 (Move), 2 (Wait)...
 
           const tl = gsap.timeline({
             id: "horizontalTween",
             scrollTrigger: {
               trigger: horizontalRef.current,
               pin: true,
-              scrub: 2,
-              end: () => "+=" + (horizontalRef.current!.offsetWidth - window.innerWidth + window.innerWidth * sections.length * 0.3)
+              scrub: 1, // Lower scrub for tighter control
+              // Much longer scroll distance to make it feel slower and allow for pauses
+              end: () => "+=" + (window.innerWidth * totalSections * 1.5)
             }
           });
 
-          tl.to(sections, {
-            xPercent: -100 * (sections.length - 1),
-            ease: "none",
-            duration: sections.length - 1
+          // For every section except the last one, we move then pause
+          sections.forEach((_, i) => {
+            if (i < totalSections - 1) {
+              // Move to next panel
+              tl.to(sections, {
+                xPercent: -100 * (i + 1),
+                ease: "power2.inOut", // Smooth ease in/out for the movement
+                duration: 2 // Movement takes "2 units" of scrolling
+              });
+
+              // HOLD/PAUSE at this panel
+              // This dummy tween consumes scroll space without moving anything
+              tl.to({}, { duration: 1 }); // Hold takes "1 unit" of scrolling
+            }
           });
 
-          // Static pause at the end
-          tl.to({}, { duration: 0.5 });
-
           // Card Scaling Effect on Scroll
+          // We need custom trigger logic because the linear containerAnimation is now step-based
           sections.forEach((section) => {
             const card = section.querySelector(".model-card");
             if (card) {
               gsap.fromTo(card,
-                { scale: 0.8, opacity: 0.5 },
+                { scale: 0.9, opacity: 0.6 },
                 {
-                  scale: 1, opacity: 1,
-                  duration: 0.5,
+                  scale: 1,
+                  opacity: 1,
+                  duration: 1,
+                  ease: "power2.out",
                   scrollTrigger: {
                     trigger: section,
-                    containerAnimation: gsap.getById("horizontalTween"),
-                    start: "left center",
+                    containerAnimation: tl, // Bind to our new step-based timeline
+                    start: "left center",   // When the section center hits the viewport center
                     end: "center center",
                     scrub: true
                   }
                 }
-              )
+              );
             }
           });
         }
