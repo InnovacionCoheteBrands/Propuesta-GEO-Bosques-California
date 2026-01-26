@@ -38,7 +38,7 @@ export const HOUSE_MODELS: HouseModel[] = [
       { label: 'Recámaras', value: '3' },
       { label: 'Baños', value: '3.5' },
     ],
-    image: '/assets/renders/roble-a.png',
+    image: '/images/model-roble.webp',
     gallery: [
       { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200', label: 'Fachada Principal' },
       { src: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1200', label: 'Sala de Estar Moderna' },
