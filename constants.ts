@@ -92,7 +92,7 @@ export const AMENITIES: Amenity[] = [
     id: 'padel',
     title: 'Cancha de Pádel',
     description: 'Disfruta de uno de los deportes de mayor crecimiento en instalaciones de primer nivel.',
-    image: '/assets/amenities/padel.png'
+    image: '/images/amenity-padel.webp'
   },
   {
     id: 'pool',
