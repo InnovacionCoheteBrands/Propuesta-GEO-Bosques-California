@@ -29,12 +29,17 @@
 
   <link rel="canonical" href="https://bosquescalifornia.com/">
 
-  <!-- Premium Fonts -->
+  <!-- Premium Fonts with Preload -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap">
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap"
     rel="stylesheet">
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="/images/hero-cover.webp" as="image" type="image/webp">
+  <link rel="preload" href="/assets/logo-bosques.png" as="image">
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>

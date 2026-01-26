@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 5000,
         host: '0.0.0.0',
-        allowedHosts: 'ba743a6d-67cb-43c3-9b7d-d885bc8848c7-00-3f0fh9nqqp3q0.spock.replit.dev',
+        allowedHosts: true,
       },
       plugins: [react()],
       define: {
@@ -18,6 +18,19 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
+        }
+      },
+      build: {
+        target: 'esnext',
+        minify: 'esbuild',
+        cssMinify: true,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'vendor-react': ['react', 'react-dom'],
+              'vendor-animation': ['gsap', 'framer-motion', '@studio-freight/lenis'],
+            }
+          }
         }
       }
     };

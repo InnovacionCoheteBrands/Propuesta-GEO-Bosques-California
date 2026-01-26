@@ -217,7 +217,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               </span>
               <div className="model-card relative z-10 grid md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl w-full">
                 <div className="aspect-[16/10] overflow-hidden rounded-lg shadow-2xl">
-                  <img src={model.image} alt={model.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                  <img src={model.image} alt={model.name} loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="text-center md:text-left">
                   <span className="text-gold tracking-widest text-xs font-bold uppercase mb-2 block">{model.specs[0].label} {model.specs[0].value}</span>
@@ -265,7 +265,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
                 className={`amenity-card absolute inset-0 rounded-2xl overflow-hidden shadow-2xl bg-white`}
                 style={{ zIndex: index + 1 }}
               >
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-80" />
                 <div className="absolute bottom-8 left-8 text-white pr-8">
                   <h3 className="font-serif text-3xl md:text-4xl mb-2">{item.title}</h3>

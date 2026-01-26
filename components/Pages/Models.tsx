@@ -40,7 +40,7 @@ const Models: React.FC = () => {
               className="w-full md:w-1/2 overflow-hidden rounded-xl shadow-2xl aspect-[4/3] cursor-pointer group"
               onClick={() => setSelectedModel(model)}
             >
-              <img src={model.image} alt={model.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+              <img src={model.image} alt={model.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
             </motion.div>
 
             <motion.div

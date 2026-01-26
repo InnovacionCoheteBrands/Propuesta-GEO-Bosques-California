@@ -45,6 +45,7 @@ const Gallery: React.FC = () => {
             <img 
                 src={img.src} 
                 alt="Gallery" 
+                loading="lazy"
                 className="w-full h-[120%] -mt-[10%] object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" 
             />
             <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
