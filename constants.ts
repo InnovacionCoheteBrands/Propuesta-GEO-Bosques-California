@@ -98,19 +98,19 @@ export const AMENITIES: Amenity[] = [
     id: 'pool',
     title: 'Alberca Tipo Resort',
     description: 'Relájate y disfruta el lujo en una alberca diseñada para tu descanso total.',
-    image: '/assets/amenities/pool.png'
+    image: '/images/amenity-pool.webp'
   },
   {
     id: 'gym',
     title: 'Gimnasio Equipado',
     description: 'Todo lo necesario para mantener tu estilo de vida saludable sin salir de casa.',
-    image: '/assets/amenities/gym.png'
+    image: '/images/amenity-gym.webp'
   },
   {
     id: 'terraza',
     title: 'Terraza para Eventos',
     description: 'El espacio ideal para celebraciones y momentos especiales con amigos y familia.',
-    image: '/assets/amenities/terraza.png'
+    image: '/images/amenity-events.webp'
   },
   {
     id: 'dog-park',
