@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Layout/Navbar';
+import ModelsShowcase from '../components/Pages/ModelsShowcase';
+import PrequalifierForm from '../components/Forms/PrequalifierForm';
+import { AMENITIES } from '../constants';
+import { Shield, Home as HomeIcon, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
+
+const title = "Bosques California | Casas de Lujo en Tlajomulco";
+const description = "Bosques California: Desarrollo residencial exclusivo en el sur de Guadalajara. Casas con diseño californiano contemporáneo, alberca, canchas y seguridad.";
+
+const navScript = `
+    const handleNav = (page) => {
+        window.location.href = page === 'home' ? '/' : '/' + page;
+    }
+`;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bosques California Residencial",
+  "url": "https://propuesta-bosques-geo.replit.app",
+  "logo": "https://propuesta-bosques-geo.replit.app/assets/logo-bosques.png",
+  "description": "Desarrollo residencial exclusivo en Tlajomulco de Zúñiga, Jalisco.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. López Mateos Sur",
+    "addressLocality": "Tlajomulco de Zúñiga",
+    "addressRegion": "Jalisco",
+    "postalCode": "45645",
+    "addressCountry": "MX"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+52-33-1071-0957",
+    "contactType": "sales"
+  }
+});
+---
+
+<script type="application/ld+json" set:html={schema} />
+
+<Layout title={title} description={description}>
+    <Navbar 
+        client:load 
+        currentPage="home" 
+        onNavigate={(page) => {
+             const path = page === 'home' ? '/' : `/${page}`;
+             window.location.href = path;
+        }} 
+    />
+
+    <main class="w-full overflow-x-hidden bg-off-white">
+        
+        <!-- 1. STATIC HERO SECTION (LCP Optimized) -->
+        <section class="relative h-screen w-full flex items-center justify-center bg-navy overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img
+                    src="/images/hero-cover.webp"
+                    class="w-full h-full object-cover opacity-90"
+                    alt="Bosques California Residencial - Tlajomulco"
+                    loading="eager"
+                />
+                <div class="absolute inset-0 bg-navy/30"></div>
+            </div>
+            
+            <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto mt-20">
+                <p class="uppercase tracking-[0.3em] text-xs md:text-sm font-medium mb-8 animate-fade-in">Exclusividad y Lujo en el Sur</p>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-10 leading-[0.9] text-shadow-sm animate-fade-in-up">
+                    Bosques California
+                </h1>
+                <p class="text-lg md:text-xl font-light mb-12 opacity-90 max-w-2xl mx-auto leading-relaxed">
+                    Casas residenciales con diseño californiano contemporáneo y amenidades tipo resort.
+                </p>
+                <div class="flex flex-col md:flex-row gap-6 justify-center">
+                    <a href="/contacto" class="bg-gold text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-navy transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                        Agenda tu cita
+                    </a>
+                    <a href="/modelos" class="border border-white text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-navy transition-all duration-300">
+                        Ver Modelos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. HYDRATED MODELS SHOWCASE (Interactiva) -->
+        <ModelsShowcase 
+            client:visible 
+            onNavigate={(page) => {
+                const path = page === 'home' ? '/' : `/${page}`;
+                window.location.href = path;
+            }} 
+        />
+
+        <!-- 3. STATIC AMENITIES (Premium Sticky Stack) -->
+        <section class="relative bg-off-white">
+             <div class="flex flex-col md:flex-row max-w-7xl mx-auto px-6 md:px-12 py-24 gap-12">
+                <!-- Sticky Header (Left) -->
+                <div class="md:w-1/3 md:h-[calc(100vh-6rem)] md:sticky md:top-24 flex flex-col justify-center z-10">
+                    <span class="text-gold uppercase tracking-widest text-sm font-bold block mb-4">Amenidades Premium</span>
+                    <h2 class="font-serif text-5xl md:text-6xl text-navy leading-tight mb-6">Espacios que<br />Trascienden</h2>
+                    <p class="text-gray-600 font-light text-lg leading-relaxed max-w-sm">
+                        Diseñados meticulosamente para crear armonía, bienestar y momentos inolvidables en el sur de la ciudad.
+                    </p>
+                </div>
+
+                <!-- Scrollable Sticky Cards (Right) -->
+                <div class="md:w-2/3 flex flex-col gap-12 pb-24">
+                    {AMENITIES.map((item, index) => (
+                        <div 
+                            class="sticky top-32 bg-white rounded-3xl overflow-hidden shadow-2xl aspect-[16/10] group border border-gray-100"
+                            style={`z-index: ${index + 1}; top: ${120 + (index * 20)}px;`}
+                        >
+                             <img 
+                                src={item.image} 
+                                alt={`Amenidad Bosques California: ${item.title}`} 
+                                loading="lazy" 
+                                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" 
+                             />
+                             <!-- Gradient Overlay -->
+                             <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                             
+                             <!-- Content -->
+                             <div class="absolute bottom-0 left-0 p-8 md:p-12 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                 <h3 class="font-serif text-3xl md:text-5xl mb-4 text-shadow-sm">{item.title}</h3>
+                                 <p class="font-light text-base md:text-lg opacity-90 leading-relaxed border-l-2 border-gold pl-4 max-w-xl">
+                                     {item.description}
+                                 </p>
+                             </div>
+                        </div>
+                    ))}
+                </div>
+             </div>
+        </section>
+
+        <!-- 4. STATIC CEM FEATURES -->
+        <section class="py-32 px-6 bg-white text-center">
+            <h4 class="text-gray-400 font-bold text-xs tracking-widest mb-16 uppercase">Experiencia Extraordinaria</h4>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+              <div class="flex flex-col items-center group">
+                <div class="w-24 h-24 rounded-full bg-navy/5 text-navy flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <HomeIcon className="w-10 h-10" />
+                </div>
+                <h3 class="font-serif text-3xl text-navy mb-4">Diseño Californiano</h3>
+                <p class="text-gray-500 font-light max-w-sm leading-relaxed">
+                    Arquitectura pensada para maximizar la luz natural, la ventilación cruzada y el confort térmico.
+                </p>
+              </div>
+              <div class="flex flex-col items-center group">
+                <div class="w-24 h-24 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="w-10 h-10" />
+                </div>
+                <h3 class="font-serif text-3xl text-navy mb-4">Plusvalía Asegurada</h3>
+                <p class="text-gray-500 font-light max-w-sm leading-relaxed">
+                    Ubicación estratégica en la zona de mayor crecimiento del sur, garantizando tu inversión patrimonial.
+                </p>
+              </div>
+            </div>
+        </section>
+
+        <!-- 5. HYDRATED FORM -->
+        <section class="py-24 px-6 bg-off-white">
+            <div class="max-w-5xl mx-auto bg-white rounded-[3rem] shadow-2xl p-8 md:p-16 relative overflow-hidden">
+                 <div class="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                 <div class="relative z-10">
+                     <h2 class="font-serif text-4xl text-navy text-center mb-12">Comienza tu Nueva Vida</h2>
+                     <PrequalifierForm client:visible />
+                 </div>
+            </div>
+        </section>
+
+        <!-- 6. STATIC FAQ (Details/Summary) -->
+        <section class="py-24 px-6 bg-white">
+            <div class="max-w-4xl mx-auto">
+              <div class="text-center mb-16">
+                <span class="text-gold uppercase tracking-widest text-xs font-bold">Preguntas Frecuentes</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-navy mt-4">Todo lo que necesitas saber</h2>
+              </div>
+              <div class="space-y-2">
+                <details class="group bg-off-white rounded-2xl p-6 open:bg-white open:shadow-lg transition-all duration-300">
+                    <summary class="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy font-medium">
+                        ¿Dónde se encuentra ubicado?
+                        <span class="text-gold text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+                    </summary>
+                    <p class="text-gray-500 font-light leading-relaxed mt-4 animate-fade-in pl-4 border-l-2 border-gold/30">
+                        En Tlajomulco de Zúñiga, Jalisco. Una ubicación estratégica conectada a López Mateos Sur y cerca de puntos clave como Galerías Santa Anita.
+                    </p>
+                </details>
+                <details class="group bg-off-white rounded-2xl p-6 open:bg-white open:shadow-lg transition-all duration-300">
+                    <summary class="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy font-medium">
+                        ¿Aceptan créditos hipotecarios?
+                        <span class="text-gold text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+                    </summary>
+                    <p class="text-gray-500 font-light leading-relaxed mt-4 animate-fade-in pl-4 border-l-2 border-gold/30">
+                        Sí, trabajamos con todas las instituciones bancarias, Infonavit y Fovissste. Nuestro equipo te asesora en todo el trámite.
+                    </p>
+                </details>
+                <details class="group bg-off-white rounded-2xl p-6 open:bg-white open:shadow-lg transition-all duration-300">
+                    <summary class="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy font-medium">
+                        ¿Qué amenidades incluye?
+                        <span class="text-gold text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
+                    </summary>
+                    <p class="text-gray-500 font-light leading-relaxed mt-4 animate-fade-in pl-4 border-l-2 border-gold/30">
+                        Alberca climatizada tipo resort, gimnasio totalmente equipado, cancha de pádel profesional, terraza para eventos, dog park y seguridad privada 24/7.
+                    </p>
+                </details>
+              </div>
+            </div>
+        </section>
+
+        <!-- 7. STATIC FOOTER -->
+        <footer class="bg-navy py-24 text-center text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('/public/assets/grain.png')] opacity-5 mix-blend-overlay"></div>
+            <div class="relative z-10 flex flex-col items-center">
+                <img
+                    src="/assets/logo-bosques.png"
+                    alt="Bosques California"
+                    class="h-24 w-auto object-contain mb-8 grayscale brightness-0 invert opacity-90"
+                />
+                <h2 class="font-serif text-4xl md:text-5xl mb-8 tracking-wide">Inicia tu legado hoy</h2>
+                
+                <div class="flex gap-8 mb-12">
+                     <a href="mailto:info@bosquescalifornia.com" class="hover:text-gold transition-colors"><Mail /></a>
+                     <a href="tel:3312345678" class="hover:text-gold transition-colors"><Phone /></a>
+                     <a href="/ubicacion" class="hover:text-gold transition-colors"><MapPin /></a>
+                </div>
+
+                <p class="text-xs opacity-40 tracking-[0.2em] font-light">BOSQUES CALIFORNIA RESIDENCIAL © {new Date().getFullYear()}</p>
+                <div class="mt-4 flex gap-4 text-[10px] opacity-30 uppercase tracking-wider">
+                    <a href="#" class="hover:text-gold">Aviso de Privacidad</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-gold">Términos y Condiciones</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+</Layout>
+
+<style>
+    .text-shadow-sm {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+    .animate-fade-in {
+        animation: fadeInUp 1.5s ease-out forwards;
+    }
+</style>

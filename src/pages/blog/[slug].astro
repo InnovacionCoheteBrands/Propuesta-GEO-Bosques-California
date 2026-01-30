@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Layout/Navbar';
+
+export function getStaticPaths() {
+    // Placeholder posts matching index.astro
+    const posts = [
+        {
+            slug: 'plusvalia-e-inversion',
+            title: '¿Cuál es la plusvalía de vivir en Santa Anita? Tendencias 2026',
+            content: 'Contenido completo del artículo sobre plusvalía...'
+        },
+        {
+            slug: 'guias-de-compra',
+            title: 'Guía de compra de casa en Tlajomulco',
+            content: 'Contenido completo de la guía...'
+        },
+         {
+            slug: 'mercado-inmobiliario',
+            title: 'Mercado Inmobiliario',
+            content: 'Contenido sobre mercado...'
+        },
+         {
+            slug: 'vida-en-zona-sur-gdl',
+            title: 'Vida en Zona Sur GDL',
+            content: 'Contenido sobre vida en el sur...'
+        }
+    ];
+    return posts.map(post => ({
+        params: { slug: post.slug },
+        props: { post }
+    }));
+}
+
+const { post } = Astro.props;
+const title = `${post.title} | Blog Bosques California`;
+const description = `Artículo: ${post.title}. Lee más en nuestro blog inmobiliario.`;
+
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="home" onNavigate={() => {}} />
+
+    <main class="pt-32 px-6 max-w-4xl mx-auto min-h-screen">
+        <article>
+            <span class="text-gold font-bold uppercase tracking-widest text-sm block mb-4">Blog Inmobiliario</span>
+            <h1 class="font-serif text-4xl md:text-5xl text-navy mb-8 leading-tight">{post.title}</h1>
+            
+            <div class="bg-gray-200 aspect-video w-full rounded-2xl mb-12 flex items-center justify-center text-gray-500">
+                Imagen Principal
+            </div>
+
+            <div class="prose prose-lg text-gray-600 font-light mx-auto">
+                <p class="lead text-xl text-navy font-normal mb-8">
+                    {post.content} (Este es un contenido simulado para la estructura SEO).
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <h3>Subtítulo SEO Relevante</h3>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            
+            <div class="mt-16 pt-8 border-t border-gray-100 mb-12">
+                 <a href="/blog" class="text-navy font-bold hover:text-gold transition-colors">← Volver al Blog</a>
+            </div>
+        </article>
+    </main>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Layout/Navbar';
+import GalleryComponent from '../components/Pages/Gallery';
+
+const title = "Galería | Bosques California";
+const description = "Explora la galería de fotos de Bosques California. Conoce los detalles arquitectónicos y el estilo de vida que te espera.";
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="galeria" onNavigate={() => {}} />
+
+    <main class="min-h-screen pt-20">
+        <GalleryComponent client:only="react" />
+    </main>
+</Layout>

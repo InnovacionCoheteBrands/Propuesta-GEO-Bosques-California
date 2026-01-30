@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Layout/Navbar';
+import { AMENITIES } from '../../constants';
+
+export function getStaticPaths() {
+  return AMENITIES.map(amenity => {
+    // Generate slug from title: "Cancha de Pádel" -> "cancha-de-padel"
+    const slug = amenity.title
+      .toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove accents
+      .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphen
+      .replace(/^-+|-+$/g, ''); // Trim hyphens
+
+    return {
+      params: { slug },
+      props: { amenity },
+    };
+  });
+}
+
+const { amenity } = Astro.props;
+
+// Metadata
+const title = `${amenity.title} | Amenidades Bosques California`;
+const description = `Disfruta de ${amenity.title} en Bosques California. ${amenity.description}`;
+
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="amenidades" onNavigate={() => {}} />
+
+    <main class="pt-32 px-6 max-w-5xl mx-auto min-h-screen">
+        <div class="text-center mb-12">
+            <span class="text-gold tracking-widest uppercase font-bold text-sm">Amenidad Exclusiva</span>
+            <h1 class="font-serif text-5xl md:text-6xl text-navy mt-4">{amenity.title}</h1>
+        </div>
+
+        <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl mb-12">
+            <img src={amenity.image} alt={amenity.title} class="w-full h-full object-cover" />
+        </div>
+
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-xl text-gray-600 leading-relaxed font-light mb-12">
+                {amenity.description}
+            </p>
+            
+            <a href="/amenidades" class="text-navy font-bold border-b border-navy pb-1 hover:text-gold hover:border-gold transition-colors">
+                ← Volver a Amenidades
+            </a>
+        </div>
+    </main>
+</Layout>

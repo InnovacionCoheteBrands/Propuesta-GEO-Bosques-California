@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Layout/Navbar';
+
+export function getStaticPaths() {
+    const zones = [
+        { slug: 'santa-anita', name: 'Santa Anita' },
+        { slug: 'san-agustin', name: 'San Agustín' },
+        { slug: 'tlajomulco', name: 'Tlajomulco' },
+        { slug: 'sur-guadalajara', name: 'Sur de Guadalajara' }
+    ];
+    return zones.map(zone => ({
+        params: { zone: zone.slug },
+        props: { zone }
+    }));
+}
+
+const { zone } = Astro.props;
+const title = `Casas en Venta en ${zone.name} | Bosques California`;
+const description = `Encuentra tu casa ideal en ${zone.name}. Bosques California ofrece la mejor opción residencial en la zona.`;
+
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="home" onNavigate={() => {}} />
+
+    <main class="pt-32 px-6 max-w-5xl mx-auto min-h-screen">
+        <h1 class="font-serif text-5xl md:text-6xl text-navy mb-8 text-center">Casas en Venta en {zone.name}</h1>
+        <p class="text-center text-xl text-gray-600 mb-12">
+            Explora las oportunidades inmobiliarias en {zone.name} y descubre por qué Bosques California es el desarrollo líder en plusvalía.
+        </p>
+        
+        <div class="bg-gray-50 p-12 rounded-2xl text-center">
+            <h3 class="text-2xl font-serif text-navy mb-4">¿Buscas vivir en {zone.name}?</h3>
+            <p class="mb-8">Agenda una cita para conocer nuestros modelos exclusivos.</p>
+            <a href="/contacto" class="bg-gold text-white px-8 py-3 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-navy transition-colors">
+                Contactar Asesor
+            </a>
+        </div>
+    </main>
+</Layout>

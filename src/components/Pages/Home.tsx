@@ -84,7 +84,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               pin: true,
               scrub: 1, // Lower scrub for tighter control
               // Scroll distance for comfortable viewing of each model
-              end: () => "+=" + (window.innerWidth * totalSections * 0.9)
+              end: () => "+=" + (window.innerWidth * totalSections * 0.5)
             }
           });
 
@@ -100,7 +100,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
 
               // HOLD/PAUSE at this panel
               // This dummy tween consumes scroll space without moving anything
-              tl.to({}, { duration: 1 }); // Hold takes "1 unit" of scrolling
+              tl.to({}, { duration: 0.5 }); // Hold takes "0.5 unit" of scrolling
             }
           });
 
@@ -243,7 +243,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
                   </button>
                 </div>
               </div>
-              
+
               {/* Scroll Indicator - Right side */}
               {index < HOUSE_MODELS.length - 1 && (
                 <div className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 text-navy/30 flex-col items-center gap-2 animate-pulse">
@@ -251,7 +251,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
                   <ArrowDown size={24} className="rotate-[-90deg]" />
                 </div>
               )}
-              
+
               {/* Scroll Indicator - Bottom for mobile */}
               <div className="md:hidden absolute bottom-8 left-1/2 -translate-x-1/2 text-navy/30 flex flex-col items-center gap-2 animate-bounce">
                 <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
@@ -379,7 +379,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         <img
           src="/assets/logo-bosques.png"
           alt="Bosques California"
-          className="h-24 w-auto object-contain mb-8 brightness-0 invert"
+          className="h-24 w-auto object-contain mb-8 grayscale invert contrast-200 mix-blend-screen"
         />
         <h2 className="font-serif text-4xl md:text-6xl mb-8">Inicia tu legado</h2>
         <p className="text-sm opacity-50 tracking-widest">BOSQUES CALIFORNIA © {new Date().getFullYear()}</p>

@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Layout/Navbar';
+
+const title = "Nosotros | Bosques California";
+const description = "Conoce más sobre la desarrolladora detrás de Bosques California y nuestra visión de calidad y plusvalía.";
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="home" onNavigate={() => {}} />
+
+    <main class="pt-32 px-6 max-w-5xl mx-auto min-h-screen">
+        <div class="text-center mb-16">
+             <span class="text-gold uppercase tracking-widest font-bold text-sm">Nuestra Visión</span>
+             <h1 class="font-serif text-5xl md:text-6xl text-navy mt-4 mb-8">Construyendo Legado</h1>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div class="bg-gray-200 aspect-square rounded-2xl"></div>
+            <div>
+                <h3 class="font-serif text-3xl text-navy mb-6">Excelencia Inmobiliaria</h3>
+                <p class="text-gray-600 leading-relaxed font-light mb-6">
+                    En Bosques California, nos dedicamos a crear espacios que trascienden lo ordinario. 
+                    Con años de experiencia en el sector residencial, nuestro compromiso es ofrecer 
+                    calidad, diseño y, sobre todo, un hogar donde las familias puedan prosperar.
+                </p>
+                <p class="text-gray-600 leading-relaxed font-light">
+                    Nuestros desarrollos se caracterizan por una integración armónica con el entorno, 
+                    amenidades de primer nivel y una ubicación estratégica que asegura tu inversión.
+                </p>
+            </div>
+        </div>
+    </main>
+</Layout>

@@ -18,7 +18,7 @@ const Location: React.FC = () => {
     return (
         <div className="relative h-screen w-full overflow-hidden">
             {/* Sidebar con información */}
-            <div className="absolute left-0 top-0 h-full w-full md:w-1/3 bg-off-white/95 backdrop-blur-sm p-8 md:p-16 flex flex-col justify-center z-10 shadow-2xl pt-20 md:pt-0">
+            <div className="absolute left-0 top-0 h-full w-full md:w-1/3 bg-off-white/95 backdrop-blur-sm p-8 md:p-16 flex flex-col justify-center z-10 shadow-2xl pt-32 md:pt-24">
                 <h2 className="font-serif text-4xl md:text-5xl text-navy mb-12">Todo a tu<br />alcance</h2>
                 <ul className="space-y-6">
                     {locations.map((loc) => (
@@ -54,7 +54,7 @@ const Location: React.FC = () => {
                 ></iframe>
 
                 {/* Etiqueta flotante del mapa (visible en desktop) */}
-                <div className="absolute top-24 right-8 bg-white/90 backdrop-blur p-4 rounded-lg shadow-lg hidden md:block">
+                <div className="absolute bottom-8 right-8 bg-white/90 backdrop-blur p-4 rounded-lg shadow-lg hidden md:block">
                     <div className="flex items-center gap-2 text-navy">
                         <MapPin className="text-gold" />
                         <span className="font-bold text-sm">Bosques California</span>

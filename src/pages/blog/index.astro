@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Layout/Navbar';
+
+const title = "Blog Inmobiliario | Bosques California";
+const description = "Noticias, tendencias y consejos sobre el mercado inmobiliario en el sur de Guadalajara.";
+
+// Placeholder posts
+const posts = [
+    {
+        slug: 'plusvalia-e-inversion',
+        title: '¿Cuál es la plusvalía de vivir en Santa Anita? Tendencias 2026',
+        excerpt: 'Analizamos el crecimiento del mercado inmobiliario en Tlajomulco y por qué es el mejor momento para invertir.',
+        date: '28 Ene 2026',
+        image: '/images/blog-1.jpg' // Ensure exists or use placeholder
+    },
+    {
+        slug: 'guias-de-compra',
+        title: 'Guía de compra de casa en Tlajomulco: créditos y consejos',
+        excerpt: 'Todo lo que necesitas saber antes de comprar tu casa: tipos de crédito, gastos notariales y más.',
+        date: '20 Ene 2026',
+        image: '/images/blog-2.jpg'
+    }
+];
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="home" onNavigate={() => {}} />
+
+    <main class="pt-24 min-h-screen bg-off-white">
+        <section class="max-w-7xl mx-auto px-6 py-12">
+            <div class="text-center mb-16">
+                <span class="text-gold uppercase tracking-widest font-bold text-sm">Blog & Noticias</span>
+                <h1 class="font-serif text-5xl md:text-7xl text-navy mt-4 mb-8">Vida en el Sur</h1>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                {posts.map(post => (
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow flex flex-col">
+                        <div class="aspect-video bg-gray-200 relative">
+                             {/* <img src={post.image} alt={post.title} class="w-full h-full object-cover" /> */}
+                             <div class="absolute inset-0 flex items-center justify-center text-gray-400">Imagen: {post.title}</div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <span class="text-xs text-gold font-bold uppercase tracking-widest mb-4">{post.date}</span>
+                            <h2 class="font-serif text-3xl text-navy mb-4 leading-tight hover:text-gold transition-colors">
+                                <a href={`/blog/${post.slug}`}>{post.title}</a>
+                            </h2>
+                            <p class="text-gray-500 font-light leading-relaxed mb-8 flex-1">
+                                {post.excerpt}
+                            </p>
+                            <a href={`/blog/${post.slug}`} class="text-navy font-bold text-sm border-b border-navy self-start pb-1 hover:border-gold hover:text-gold transition-colors">
+                                LEER ARTÍCULO
+                            </a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
+    </main>
+</Layout>

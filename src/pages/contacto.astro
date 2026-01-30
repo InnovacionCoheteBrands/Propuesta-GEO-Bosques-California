@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Layout/Navbar';
+import { ContactPage as ContactFormComponent } from '../components/Pages/Forms';
+
+const title = "Contacto | Bosques California";
+const description = "Agenda tu visita a Bosques California. Estamos listos para atenderte por WhatsApp, teléfono o en nuestras oficinas de ventas.";
+---
+
+<Layout title={title} description={description}>
+    <Navbar client:load currentPage="contacto" onNavigate={() => {}} />
+
+    <main class="min-h-screen">
+        <ContactFormComponent client:load />
+    </main>
+</Layout>
