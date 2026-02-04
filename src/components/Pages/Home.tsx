@@ -131,12 +131,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
       });
 
       // Amenities Carousel (Vertical Stacking)
-      const amenitiesContainer = document.querySelector(".amenities-container");
-      const amenityCards = gsap.utils.toArray<HTMLElement>(".amenity-card");
+      // Use scoped selector within the context, which is bound to containerRef
+      // We don't need a separate amenitiesRef for the trigger if we use the class selector within the scope
+      const amenitiesContainer = ctx.selector ? ctx.selector(".amenities-container")[0] : null;
+      const amenityCards = ctx.selector ? ctx.selector(".amenity-card") : [];
 
       if (amenitiesContainer && amenityCards.length > 0) {
         // Initial state
-        amenityCards.forEach((card, i) => {
+        amenityCards.forEach((card: HTMLElement, i: number) => {
           if (i > 0) gsap.set(card, { yPercent: 100 });
         });
 

@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Layout/Navbar';
 import ModelsShowcase from '../components/Pages/ModelsShowcase';
+import AmenitiesShowcase from '../components/Pages/AmenitiesShowcase';
 import PrequalifierForm from '../components/Forms/PrequalifierForm';
-import { AMENITIES } from '../constants';
 import { Shield, Home as HomeIcon, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
 
 const title = "Bosques California | Casas de Lujo en Tlajomulco";
@@ -92,46 +92,9 @@ const schema = JSON.stringify({
             }} 
         />
 
-        <!-- 3. STATIC AMENITIES (Premium Sticky Stack) -->
-        <section class="relative bg-off-white">
-             <div class="flex flex-col md:flex-row max-w-7xl mx-auto px-6 md:px-12 py-24 gap-12">
-                <!-- Sticky Header (Left) -->
-                <div class="md:w-1/3 md:h-[calc(100vh-6rem)] md:sticky md:top-24 flex flex-col justify-center z-10">
-                    <span class="text-gold uppercase tracking-widest text-sm font-bold block mb-4">Amenidades Premium</span>
-                    <h2 class="font-serif text-5xl md:text-6xl text-navy leading-tight mb-6">Espacios que<br />Trascienden</h2>
-                    <p class="text-gray-600 font-light text-lg leading-relaxed max-w-sm">
-                        Diseñados meticulosamente para crear armonía, bienestar y momentos inolvidables en el sur de la ciudad.
-                    </p>
-                </div>
+        <!-- 3. HYDRATED AMENITIES SHOWCASE (GSAP Stacking Animation) -->
+        <AmenitiesShowcase client:visible />
 
-                <!-- Scrollable Sticky Cards (Right) -->
-                <div class="md:w-2/3 flex flex-col gap-12 pb-24">
-                    {AMENITIES.map((item, index) => (
-                        <div 
-                            class="sticky top-32 bg-white rounded-3xl overflow-hidden shadow-2xl aspect-[16/10] group border border-gray-100"
-                            style={`z-index: ${index + 1}; top: ${120 + (index * 20)}px;`}
-                        >
-                             <img 
-                                src={item.image} 
-                                alt={`Amenidad Bosques California: ${item.title}`} 
-                                loading="lazy" 
-                                class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" 
-                             />
-                             <!-- Gradient Overlay -->
-                             <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                             
-                             <!-- Content -->
-                             <div class="absolute bottom-0 left-0 p-8 md:p-12 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                 <h3 class="font-serif text-3xl md:text-5xl mb-4 text-shadow-sm">{item.title}</h3>
-                                 <p class="font-light text-base md:text-lg opacity-90 leading-relaxed border-l-2 border-gold pl-4 max-w-xl">
-                                     {item.description}
-                                 </p>
-                             </div>
-                        </div>
-                    ))}
-                </div>
-             </div>
-        </section>
 
         <!-- 4. STATIC CEM FEATURES -->
         <section class="py-32 px-6 bg-white text-center">
@@ -141,18 +104,18 @@ const schema = JSON.stringify({
                 <div class="w-24 h-24 rounded-full bg-navy/5 text-navy flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <HomeIcon className="w-10 h-10" />
                 </div>
-                <h3 class="font-serif text-3xl text-navy mb-4">Diseño Californiano</h3>
+                <h3 class="font-serif text-3xl text-navy mb-4">Diseño en Tlajomulco</h3>
                 <p class="text-gray-500 font-light max-w-sm leading-relaxed">
-                    Arquitectura pensada para maximizar la luz natural, la ventilación cruzada y el confort térmico.
+                    Arquitectura californiana pensada para el clima del sur de Guadalajara, maximizando luz y ventilación.
                 </p>
               </div>
               <div class="flex flex-col items-center group">
                 <div class="w-24 h-24 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Shield className="w-10 h-10" />
                 </div>
-                <h3 class="font-serif text-3xl text-navy mb-4">Plusvalía Asegurada</h3>
+                <h3 class="font-serif text-3xl text-navy mb-4">Plusvalía en López Mateos</h3>
                 <p class="text-gray-500 font-light max-w-sm leading-relaxed">
-                    Ubicación estratégica en la zona de mayor crecimiento del sur, garantizando tu inversión patrimonial.
+                    Ubicación estratégica en la zona de mayor crecimiento residencial, garantizando tu inversión patrimonial.
                 </p>
               </div>
             </div>
@@ -179,11 +142,11 @@ const schema = JSON.stringify({
               <div class="space-y-2">
                 <details class="group bg-off-white rounded-2xl p-6 open:bg-white open:shadow-lg transition-all duration-300">
                     <summary class="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy font-medium">
-                        ¿Dónde se encuentra ubicado?
+                        ¿Dónde se ubica el desarrollo Bosques California?
                         <span class="text-gold text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                     </summary>
                     <p class="text-gray-500 font-light leading-relaxed mt-4 animate-fade-in pl-4 border-l-2 border-gold/30">
-                        En Tlajomulco de Zúñiga, Jalisco. Una ubicación estratégica conectada a López Mateos Sur y cerca de puntos clave como Galerías Santa Anita.
+                        Estamos en <strong>Tlajomulco de Zúñiga</strong>, con acceso directo por <strong>López Mateos Sur</strong>. Una ubicación conectada a Galerías Santa Anita y Punto Sur.
                     </p>
                 </details>
                 <details class="group bg-off-white rounded-2xl p-6 open:bg-white open:shadow-lg transition-all duration-300">
@@ -192,16 +155,16 @@ const schema = JSON.stringify({
                         <span class="text-gold text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                     </summary>
                     <p class="text-gray-500 font-light leading-relaxed mt-4 animate-fade-in pl-4 border-l-2 border-gold/30">
-                        Sí, trabajamos con todas las instituciones bancarias, Infonavit y Fovissste. Nuestro equipo te asesora en todo el trámite.
+                        Sí, aceptamos todos los créditos: <strong>Infonavit, Fovissste y Bancarios</strong>. Nuestro equipo de asesores gestiona tu trámite de compra sin costo.
                     </p>
                 </details>
                 <details class="group bg-off-white rounded-2xl p-6 open:bg-white open:shadow-lg transition-all duration-300">
                     <summary class="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy font-medium">
-                        ¿Qué amenidades incluye?
+                        ¿Qué amenidades tiene el fraccionamiento?
                         <span class="text-gold text-2xl group-open:rotate-45 transition-transform duration-300">+</span>
                     </summary>
                     <p class="text-gray-500 font-light leading-relaxed mt-4 animate-fade-in pl-4 border-l-2 border-gold/30">
-                        Alberca climatizada tipo resort, gimnasio totalmente equipado, cancha de pádel profesional, terraza para eventos, dog park y seguridad privada 24/7.
+                        Contamos con amenidades de lujo: Alberca climatizada, gimnasio equipado, cancha de pádel, dog park y doble filtro de seguridad 24/7.
                     </p>
                 </details>
               </div>
