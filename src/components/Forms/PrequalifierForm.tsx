@@ -15,7 +15,9 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
         budget: '',
         financing: '',
         contactPreference: '',
-        locationInterest: '',
+        whatsapp: '',
+        company: '',
+        position: '',
         decisionMaker: '',
         decisionFactor: '',
         name: '',
@@ -50,7 +52,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
     const isStepValid = () => {
         if (step === 1) return formData.purpose && formData.decisionFactor;
         if (step === 2) return formData.budget && formData.financing && formData.contactPreference;
-        if (step === 3) return formData.name && formData.email && formData.phone && formData.locationInterest && formData.decisionMaker;
+        if (step === 3) return formData.name && formData.email && formData.phone && formData.whatsapp && formData.decisionMaker;
         return false;
     };
 
@@ -109,10 +111,10 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                         >
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    1. ¿Cómo te ves en Bosques California?
+                                    1. ¿Para qué buscas tu casa?
                                 </label>
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                                    {['Uso de vivienda', 'Segunda residencia para mi familia', 'Inversión'].map((opt) => (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    {['Habitar', 'Inversión'].map((opt) => (
                                         <button
                                             key={opt}
                                             type="button"
@@ -127,7 +129,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
 
                             <div className="space-y-3">
                                 <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
-                                    2. ¿Qué factor es determinante para tu decisión?
+                                    2. ¿Qué buscas en tu nueva casa?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                                     {['Plusvalía e Inversión', 'Seguridad y Privacidad', 'Ubicación y Conectividad', 'Diseño y Espacios'].map((opt) => (
@@ -255,6 +257,43 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                     />
                                 </div>
                                 <div className="space-y-2">
+                                    <label className={`text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white/60' : 'text-gray-400'}`}>Número de WhatsApp</label>
+                                    <input
+                                        required
+                                        type="tel"
+                                        name="whatsapp"
+                                        value={formData.whatsapp}
+                                        onChange={handleInputChange}
+                                        placeholder="33 0000 0000"
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div className="space-y-2">
+                                    <label className={`text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white/60' : 'text-gray-400'}`}>Empresa</label>
+                                    <input
+                                        type="text"
+                                        name="company"
+                                        value={formData.company}
+                                        onChange={handleInputChange}
+                                        placeholder="Nombre de tu empresa"
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className={`text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white/60' : 'text-gray-400'}`}>Puesto</label>
+                                    <input
+                                        type="text"
+                                        name="position"
+                                        value={formData.position}
+                                        onChange={handleInputChange}
+                                        placeholder="Tu cargo o puesto"
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                    />
+                                </div>
+                                <div className="space-y-2">
                                     <label className={`text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white/60' : 'text-gray-400'}`}>¿Quién decidirá la compra?</label>
                                     <select
                                         name="decisionMaker"
@@ -268,19 +307,6 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         <option value="Toda la familia">Toda la familia</option>
                                     </select>
                                 </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className={`text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white/60' : 'text-gray-400'}`}>Ubicación actual y zona de interés</label>
-                                <textarea
-                                    required
-                                    name="locationInterest"
-                                    value={formData.locationInterest}
-                                    onChange={handleInputChange}
-                                    placeholder="Ej. Vivo en Guadalajara, me interesa Tlajomulco..."
-                                    rows={1}
-                                    className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light resize-none ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
-                                />
                             </div>
                         </motion.div>
                     )}
@@ -315,7 +341,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                             disabled={!isStepValid() || status === 'submitting'}
                             className="flex-1 flex items-center justify-center gap-2 bg-navy text-white px-8 py-4 rounded-full text-xs uppercase tracking-[0.2em] font-bold hover:bg-gold transition-colors duration-300 disabled:opacity-50"
                         >
-                            {status === 'submitting' ? 'Procesando...' : 'Finalizar Pre-calificación'}
+                            {status === 'submitting' ? 'Procesando...' : 'Enviar'}
                         </button>
                     )}
                 </div>

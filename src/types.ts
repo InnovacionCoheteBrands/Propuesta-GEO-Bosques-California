@@ -49,7 +49,9 @@ export interface PrequalifierData {
   budget: string;
   financing: string;
   contactPreference: string;
-  locationInterest: string;
+  whatsapp: string;
+  company: string;
+  position: string;
   decisionMaker: string;
   decisionFactor: string;
   name: string;

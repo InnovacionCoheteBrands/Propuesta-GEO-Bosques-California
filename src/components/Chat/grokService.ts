@@ -1,5 +1,5 @@
-// Supabase Edge Function URL - Replace with your actual Supabase project URL
-const EDGE_FUNCTION_URL = import.meta.env.VITE_SUPABASE_FUNCTION_URL || "https://YOUR_PROJECT.supabase.co/functions/v1/chat";
+// Astro API endpoint for Grok Chat (server-side for security)
+const API_ENDPOINT = "/api/chat";
 
 export interface ChatMessage {
     role: 'system' | 'user' | 'assistant';
@@ -8,7 +8,7 @@ export interface ChatMessage {
 
 export const sendMessageToGrok = async (messages: ChatMessage[]): Promise<string> => {
     try {
-        const response = await fetch(EDGE_FUNCTION_URL, {
+        const response = await fetch(API_ENDPOINT, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

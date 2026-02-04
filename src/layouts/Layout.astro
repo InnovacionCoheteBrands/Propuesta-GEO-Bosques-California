@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ChatWidget from '../components/Chat/ChatWidget';
 
 interface Props {
 	title: string;
@@ -45,6 +46,7 @@ const { title, description = "Descubre Bosques California, el desarrollo residen
 	</head>
 	<body>
 		<slot />
+		<ChatWidget client:load />
 		
 		<script>
 			import Lenis from '@studio-freight/lenis';

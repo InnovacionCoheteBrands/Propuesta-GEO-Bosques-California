@@ -3,6 +3,10 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import tailwind from '@astrojs/tailwind';
+import { loadEnv } from 'vite';
+
+// Load environment variables
+const { GROK_API_KEY, GEMINI_API_KEY } = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,10 +27,11 @@ export default defineConfig({
                 '@': '/src',
             },
         },
-        // Ensure we can use env vars
+        // Expose env vars to server-side code
         define: {
-            'process.env.API_KEY': JSON.stringify(process.env.GEMINI_API_KEY),
-            'process.env.GEMINI_API_KEY': JSON.stringify(process.env.GEMINI_API_KEY)
+            'process.env.GROK_API_KEY': JSON.stringify(GROK_API_KEY),
+            'process.env.GEMINI_API_KEY': JSON.stringify(GEMINI_API_KEY),
+            'process.env.API_KEY': JSON.stringify(GEMINI_API_KEY)
         }
     },
 });
