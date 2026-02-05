@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import tailwind from '@astrojs/tailwind';
+import node from '@astrojs/node';
 import { loadEnv } from 'vite';
 
 // Load environment variables
@@ -11,6 +12,14 @@ const { GROK_API_KEY, GEMINI_API_KEY } = loadEnv(process.env.NODE_ENV || 'develo
 // https://astro.build/config
 export default defineConfig({
     site: 'https://propuesta-bosques-geo.replit.app', // Base URL for sitemap
+    output: 'static', // Static pages + SSR for prerender=false pages
+    adapter: node({
+        mode: 'standalone',
+    }),
+    server: {
+        host: '0.0.0.0',
+        port: 5000,
+    },
     integrations: [
         react(),
         sitemap(),
