@@ -1,0 +1,46 @@
+---
+export interface Props {
+  type: 'Organization' | 'Product' | 'FAQPage' | 'BreadcrumbList';
+  data: any;
+}
+
+const { type, data } = Astro.props;
+
+let schema = {};
+
+if (type === 'Organization') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Bosques California Residencial",
+    "url": "https://bosquescalifornia.com",
+    "logo": "https://bosquescalifornia.com/assets/logo-bosques.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+52-33-1071-0957",
+      "contactType": "sales"
+    },
+    ...data
+  };
+} else if (type === 'Product') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "brand": {
+      "@type": "Brand",
+      "name": "Bosques California"
+    },
+    ...data
+  };
+} else if (type === 'FAQPage') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": data
+  };
+}
+
+const jsonLd = JSON.stringify(schema);
+---
+
+<script type="application/ld+json" set:html={jsonLd} />

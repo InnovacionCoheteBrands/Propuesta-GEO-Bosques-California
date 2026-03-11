@@ -53,7 +53,7 @@ const IntroOverlay: React.FC<IntroOverlayProps> = ({ onComplete }) => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[100] bg-navy flex items-center justify-center text-white pointer-events-none"
+            className="fixed inset-0 z-[100] bg-forest flex items-center justify-center text-white pointer-events-none"
         >
             <div
                 ref={textRef}
@@ -70,4 +70,5 @@ const IntroOverlay: React.FC<IntroOverlayProps> = ({ onComplete }) => {
 };
 
 export default IntroOverlay;
+
 

@@ -21,7 +21,7 @@ const PRICE_RANGES = {
         <section class="max-w-7xl mx-auto px-6 py-12">
             <div class="text-center mb-16">
                 <span class="text-gold uppercase tracking-widest font-bold text-sm">Inversión Patrimonial</span>
-                <h1 class="font-serif text-5xl md:text-7xl text-navy mt-4 mb-8">Lista de Precios</h1>
+                <h1 class="font-serif text-5xl md:text-7xl text-forest mt-4 mb-8">Lista de Precios</h1>
                 <p class="max-w-2xl mx-auto text-gray-600 text-lg">
                     Precios sujetos a cambio sin previo aviso. La disponibilidad varía según la ubicación del lote.
                 </p>
@@ -30,7 +30,7 @@ const PRICE_RANGES = {
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="border-b-2 border-navy/10 text-navy font-serif text-xl">
+                        <tr class="border-b-2 border-forest/10 text-forest font-serif text-xl">
                             <th class="p-4">Modelo</th>
                             <th class="p-4">Construcción</th>
                             <th class="p-4">Terreno</th>
@@ -44,7 +44,7 @@ const PRICE_RANGES = {
                                 <td class="p-4">
                                     <div class="flex items-center gap-4">
                                         <img src={model.image} alt={model.name} class="w-16 h-16 rounded-lg object-cover" />
-                                        <span class="font-bold text-lg text-navy">{model.name}</span>
+                                        <span class="font-bold text-lg text-forest">{model.name}</span>
                                     </div>
                                 </td>
                                 <td class="p-4">{model.specs.find(s => s.label === 'Construcción')?.value}</td>
@@ -53,7 +53,7 @@ const PRICE_RANGES = {
                                     {PRICE_RANGES[model.id as keyof typeof PRICE_RANGES] || "Consultar"}
                                 </td>
                                 <td class="p-4 text-right">
-                                    <a href={`/modelos/${model.id}`} class="text-xs font-bold uppercase tracking-widest text-navy border border-navy px-4 py-2 rounded-full hover:bg-navy hover:text-white transition-colors">
+                                    <a href={`/modelos/${model.id}`} class="text-xs font-bold uppercase tracking-widest text-forest border border-forest px-4 py-2 rounded-full hover:bg-forest hover:text-white transition-colors">
                                         Ver Ficha
                                     </a>
                                 </td>
@@ -65,10 +65,11 @@ const PRICE_RANGES = {
 
             <div class="mt-16 text-center">
                 <p class="text-sm text-gray-400 mb-6">* Los precios mostrados son referenciales y pueden cambiar.</p>
-                <a href="/contacto" class="bg-navy text-white px-8 py-4 rounded-full uppercase tracking-widest font-bold hover:bg-gold transition-colors">
+                <a href="/contacto" class="bg-forest text-white px-8 py-4 rounded-full uppercase tracking-widest font-bold hover:bg-gold transition-colors">
                     Solicitar Cotización Formal
                 </a>
             </div>
         </section>
     </main>
 </Layout>
+

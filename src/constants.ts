@@ -40,11 +40,11 @@ export const HOUSE_MODELS: HouseModel[] = [
     ],
     image: '/images/model-roble.webp',
     gallery: [
-      { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200', label: 'Fachada Principal' },
-      { src: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1200', label: 'Sala de Estar Moderna' },
-      { src: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200', label: 'Cocina Integral de Lujo' },
-      { src: 'https://images.unsplash.com/photo-1554995207-c18c20360a59?q=80&w=1200', label: 'Recámara Principal' },
-      { src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200', label: 'Terraza Privada' },
+      { src: '/images/interior-roble-sala.webp', label: 'Sala de Estar Roble' },
+      { src: '/images/interior-roble-cocina.webp', label: 'Cocina de Lujo' },
+      { src: '/images/interior-roble-cocinacomedor.webp', label: 'Espacio Integrado' },
+      { src: '/images/interior-roble-recamara.webp', label: 'Recámara Principal' },
+      { src: '/images/interior-roble-recamarasecundaria.webp', label: 'Recámara Secundaria' },
     ]
   },
   {
@@ -60,9 +60,9 @@ export const HOUSE_MODELS: HouseModel[] = [
     image: '/images/model-secuoya.webp',
     gallery: [
       { src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200', label: 'Residencia Secuoya' },
-      { src: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200', label: 'Gran Estancia' },
-      { src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200', label: 'Cocina Gourmet' },
-      { src: 'https://images.unsplash.com/photo-1560448204-61dc36dc98c8?q=80&w=1200', label: 'Master Suite' },
+      { src: '/images/interior-secuoya-sala.webp', label: 'Gran Estancia' },
+      { src: '/images/interior-secuoya-cocina.webp', label: 'Cocina Gourmet' },
+      { src: '/images/interior-secuoya-recamara.webp', label: 'Master Suite' },
       { src: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200', label: 'Terraza y Deck' },
     ]
   }
@@ -108,10 +108,12 @@ export const AMENITIES: Amenity[] = [
 ];
 
 export const GALLERY_IMAGES: GalleryItem[] = [
-  { id: '1', src: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=800', col: 1, speed: 0.1 },
-  { id: '2', src: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=800', col: 2, speed: 0.2 },
-  { id: '3', src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800', col: 3, speed: 0.15 },
-  { id: '4', src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800', col: 1, speed: 0.05 },
-  { id: '5', src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800', col: 2, speed: 0.25 },
-  { id: '6', src: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=800', col: 3, speed: 0.1 }
+  { id: '1', src: '/images/galeria-1.jpg', col: 1, speed: 0.1 },
+  { id: '2', src: '/images/galeria-2.webp', col: 2, speed: 0.2 },
+  { id: '3', src: '/images/galeria-3.webp', col: 3, speed: 0.15 },
+  { id: '4', src: '/images/galeria-4.webp', col: 1, speed: 0.05 },
+  { id: '5', src: '/images/galeria-5.webp', col: 2, speed: 0.25 },
+  { id: '6', src: '/images/galeria-6.webp', col: 3, speed: 0.1 },
+  { id: '7', src: '/images/galeria-7.webp', col: 1, speed: 0.15 }
 ];
+

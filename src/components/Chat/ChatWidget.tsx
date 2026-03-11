@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChatMessage as UI_ChatMessage } from '../../types';
-import { sendMessageToGrok, ChatMessage as GrokMessage } from './grokService';
-import { getSystemPrompt } from './systemPrompt';
 
 const ChatWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,18 +42,21 @@ const ChatWidget: React.FC = () => {
     setIsTyping(true);
 
     try {
-      // 1. Build history for Grok (System + last 10 messages for efficiency)
-      const history: GrokMessage[] = [
-        { role: 'system', content: getSystemPrompt() },
-        ...messages.slice(-10).map(m => ({
-          role: m.role === 'user' ? 'user' as const : 'assistant' as const,
-          content: m.text
-        })),
-        { role: 'user', content: input }
-      ];
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: input,
+          history: messages.map(m => ({
+            role: m.role === 'ai' ? 'model' : 'user',
+            parts: [{ text: m.text }]
+          }))
+        })
+      });
 
-      // 2. Call Grok API
-      const aiResponse = await sendMessageToGrok(history);
+      const data = await response.json();
+
+      const aiResponse = data.reply || "Lo siento, hubo un error de conexión.";
 
       // 3. Update UI
       setMessages(prev => [...prev, {
@@ -64,7 +65,7 @@ const ChatWidget: React.FC = () => {
         text: aiResponse
       }]);
 
-      // 4. Check for escalation keywords
+      // 4. Check for escalation keywords (Simple Client-Side Check)
       const lowerResp = aiResponse.toLowerCase();
       if (lowerResp.includes('asesor') || lowerResp.includes('humano') || lowerResp.includes('cita') || lowerResp.includes('whatsapp')) {
         setShowEscalation(true);
@@ -75,7 +76,7 @@ const ChatWidget: React.FC = () => {
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         role: 'ai',
-        text: "Lo lamento, estoy experimentando una breve interrupción en mi conexión premium. ¿Podría intentarlo de nuevo en un momento o contactar a un asesor?"
+        text: "Lo lamento, estoy experimentando una breve interrupción. ¿Podría intentarlo de nuevo?"
       }]);
     } finally {
       setIsTyping(false);
@@ -93,7 +94,7 @@ const ChatWidget: React.FC = () => {
             className="w-80 md:w-96 bg-white rounded-2xl shadow-2xl mb-4 overflow-hidden border border-gray-100 flex flex-col h-[500px]"
           >
             {/* Header */}
-            <div className="bg-navy p-5 flex justify-between items-center text-white">
+            <div className="bg-forest p-5 flex justify-between items-center text-white">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center border border-gold/30">
                   <span className="text-gold font-serif text-xs">BC</span>
@@ -125,9 +126,9 @@ const ChatWidget: React.FC = () => {
                   href="https://wa.me/3310710957"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-navy text-xs font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform"
+                  className="text-forest text-xs font-bold flex items-center justify-center gap-3 hover:scale-105 transition-transform"
                 >
-                  <span className="bg-navy text-white px-2 py-0.5 rounded text-[9px]">PRO</span>
+                  <span className="bg-forest text-white px-2 py-0.5 rounded text-[9px]">PRO</span>
                   SOLICITAR ASESOR HUMANO ➔
                 </a>
               </motion.div>
@@ -144,7 +145,7 @@ const ChatWidget: React.FC = () => {
                   key={m.id}
                   className={`max-w-[85%] p-4 text-sm leading-relaxed ${m.role === 'ai'
                     ? 'bg-white text-gray-700 self-start rounded-2xl rounded-bl-none shadow-[4px_4px_10px_rgba(0,0,0,0.02)]'
-                    : 'bg-navy text-white self-end rounded-2xl rounded-br-none'
+                    : 'bg-forest text-white self-end rounded-2xl rounded-br-none'
                     }`}
                 >
                   {renderMessageText(m.text)}
@@ -177,7 +178,7 @@ const ChatWidget: React.FC = () => {
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isTyping}
-                className="w-10 h-10 bg-navy text-gold rounded-full flex items-center justify-center hover:bg-gold hover:text-navy transition-all duration-300 disabled:opacity-30 flex-shrink-0 shadow-lg shadow-navy/10"
+                className="w-10 h-10 bg-forest text-gold rounded-full flex items-center justify-center hover:bg-gold hover:text-forest transition-all duration-300 disabled:opacity-30 flex-shrink-0 shadow-lg shadow-forest/10"
               >
                 <Send size={18} />
               </button>
@@ -190,7 +191,7 @@ const ChatWidget: React.FC = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 bg-navy rounded-full shadow-[0_10px_30px_rgba(30,61,47,0.3)] flex items-center justify-center text-gold border-2 border-gold/20 hover:border-gold transition-all duration-500 relative group"
+        className="w-16 h-16 bg-forest rounded-full shadow-[0_10px_30px_rgba(30,61,47,0.3)] flex items-center justify-center text-gold border-2 border-gold/20 hover:border-gold transition-all duration-500 relative group"
       >
         <div className="absolute inset-0 rounded-full bg-gold/10 scale-0 group-hover:scale-100 transition-transform duration-500" />
         <AnimatePresence mode="wait">
@@ -210,3 +211,4 @@ const ChatWidget: React.FC = () => {
 };
 
 export default ChatWidget;
+

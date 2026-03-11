@@ -45,6 +45,15 @@ const { title, description = "Descubre Bosques California, el desarrollo residen
         <meta property="twitter:image" content="/images/hero-cover.webp" />
 	</head>
 	<body>
+		<!-- Premium GSAP Curtain Preloader -->
+		<div id="preloader" class="fixed inset-0 bg-forest z-[9999] flex items-center justify-center" style="background-color: var(--forest);">
+			<div class="text-center opacity-0" id="preloader-content">
+				<img src="/assets/logo-bosques.png" alt="Bosques California" class="h-24 w-auto object-contain mb-4 mx-auto" />
+				<h1 class="font-serif text-3xl text-white tracking-widest uppercase">Bosques California</h1>
+				<p class="text-gold text-xs tracking-[0.3em] mt-2 uppercase">Residencial</p>
+			</div>
+		</div>
+
 		<slot />
 		<ChatWidget client:load />
 		
@@ -55,6 +64,32 @@ const { title, description = "Descubre Bosques California, el desarrollo residen
 
 			// Register GSAP Plugin
 			gsap.registerPlugin(ScrollTrigger);
+
+			// Preloader Logic
+			document.addEventListener("DOMContentLoaded", () => {
+				const tl = gsap.timeline();
+
+				// Disable scroll initially
+				document.body.style.overflow = 'hidden';
+
+				tl.to("#preloader-content", {
+					opacity: 1,
+					y: 0,
+					duration: 1,
+					ease: "power2.out",
+					delay: 0.2
+				})
+				.to("#preloader", {
+					yPercent: -100,
+					duration: 1.5,
+					ease: "expo.inOut",
+					delay: 1.5, // Force stay visible for branding
+					onComplete: () => {
+						// Re-enable scroll
+						document.body.style.overflow = 'auto';
+					}
+				}, "-=0.2");
+			});
 
 			// Initialize Lenis
 			const lenis = new Lenis({
@@ -89,3 +124,4 @@ const { title, description = "Descubre Bosques California, el desarrollo residen
 		</script>
 	</body>
 </html>
+

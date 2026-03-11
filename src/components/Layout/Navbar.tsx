@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const isHome = currentPage === 'home';
   const showSolidNav = scrolled || !isHome || mobileMenuOpen;
 
-  const textClass = showSolidNav ? 'text-navy' : 'text-white';
+  const textClass = showSolidNav ? 'text-forest' : 'text-white';
   const shadowClass = showSolidNav ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]';
 
   const handleNavClick = (id: string) => {
@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
       {/* 2. Solid White Layer (Scrolled/Other Pages) */}
       <div
-        className={`absolute inset-0 z-0 bg-off-white/95 backdrop-blur-md shadow-sm border-b border-navy/5 transition-opacity duration-700 pointer-events-none ${showSolidNav ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 z-0 bg-off-white/95 backdrop-blur-md shadow-sm border-b border-forest/5 transition-opacity duration-700 pointer-events-none ${showSolidNav ? 'opacity-100' : 'opacity-0'}`}
       />
 
       <div className="relative z-10 flex justify-between items-center w-full">
@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                   key={item.id}
                   href={href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-xl font-serif font-medium uppercase tracking-widest ${item.isSpecial ? 'text-gold' : 'text-navy'}`}
+                  className={`text-xl font-serif font-medium uppercase tracking-widest ${item.isSpecial ? 'text-gold' : 'text-forest'}`}
                 >
                   {item.label}
                 </a>
@@ -119,3 +119,4 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 };
 
 export default Navbar;
+

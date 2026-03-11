@@ -19,7 +19,7 @@ const Location: React.FC = () => {
         <div className="relative h-screen w-full overflow-hidden">
             {/* Sidebar con información */}
             <div className="absolute left-0 top-0 h-full w-full md:w-1/3 bg-off-white/95 backdrop-blur-sm p-8 md:p-16 flex flex-col justify-center z-10 shadow-2xl pt-32 md:pt-24">
-                <h2 className="font-serif text-4xl md:text-5xl text-navy mb-12">Todo a tu<br />alcance</h2>
+                <h2 className="font-serif text-4xl md:text-5xl text-forest mb-12">Todo a tu<br />alcance</h2>
                 <ul className="space-y-6">
                     {locations.map((loc) => (
                         <motion.li
@@ -29,10 +29,10 @@ const Location: React.FC = () => {
                             className="cursor-pointer group"
                         >
                             <div className="flex items-center justify-between border-b border-gray-200 pb-4 group-hover:border-gold transition-colors">
-                                <span className={`font-serif text-xl transition-colors ${activeLoc === loc.id ? 'text-gold' : 'text-navy'}`}>
+                                <span className={`font-serif text-xl transition-colors ${activeLoc === loc.id ? 'text-gold' : 'text-forest'}`}>
                                     {loc.name}
                                 </span>
-                                <span className="text-xs font-bold bg-navy text-white px-2 py-1 rounded">
+                                <span className="text-xs font-bold bg-forest text-white px-2 py-1 rounded">
                                     {loc.time}
                                 </span>
                             </div>
@@ -55,7 +55,7 @@ const Location: React.FC = () => {
 
                 {/* Etiqueta flotante del mapa (visible en desktop) */}
                 <div className="absolute bottom-8 right-8 bg-white/90 backdrop-blur p-4 rounded-lg shadow-lg hidden md:block">
-                    <div className="flex items-center gap-2 text-navy">
+                    <div className="flex items-center gap-2 text-forest">
                         <MapPin className="text-gold" />
                         <span className="font-bold text-sm">Bosques California</span>
                     </div>
@@ -66,3 +66,4 @@ const Location: React.FC = () => {
 };
 
 export default Location;
+

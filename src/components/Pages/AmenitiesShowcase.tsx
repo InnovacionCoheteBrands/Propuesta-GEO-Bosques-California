@@ -53,7 +53,7 @@ const AmenitiesShowcase: React.FC = () => {
                     <span className="text-gold uppercase tracking-widest text-sm font-bold block mb-4">
                         Amenidades Premium
                     </span>
-                    <h2 className="font-serif text-5xl md:text-6xl text-navy leading-tight mb-6">
+                    <h2 className="font-serif text-5xl md:text-6xl text-forest leading-tight mb-6">
                         Espacios que<br />Trascienden
                     </h2>
                     <p className="text-gray-600 font-light text-lg leading-relaxed max-w-sm">
@@ -79,7 +79,7 @@ const AmenitiesShowcase: React.FC = () => {
                                 className="w-full h-full object-cover"
                             />
                             {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-80" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/20 to-transparent opacity-80" />
 
                             {/* Content */}
                             <div className="absolute bottom-0 left-0 p-8 md:p-12 text-white">
@@ -97,3 +97,4 @@ const AmenitiesShowcase: React.FC = () => {
 };
 
 export default AmenitiesShowcase;
+

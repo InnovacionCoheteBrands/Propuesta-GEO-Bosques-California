@@ -35,7 +35,7 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
             >
                 {/* Backdrop Layer */}
                 <div
-                    className="absolute inset-0 bg-navy/80 backdrop-blur-sm transition-opacity"
+                    className="absolute inset-0 bg-forest/80 backdrop-blur-sm transition-opacity"
                     onClick={onClose}
                 />
 
@@ -48,12 +48,12 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                     className="relative bg-white w-full h-full md:max-w-7xl md:h-[85vh] md:rounded-2xl shadow-2xl overflow-hidden flex flex-col z-[210]"
                 >
                     {/* Integrated Header */}
-                    <nav className="w-full px-6 py-4 md:px-12 flex justify-between items-center bg-off-white shadow-sm border-b border-navy/5 shrink-0">
-                        <div className="font-serif text-xl md:text-2xl font-bold tracking-[2px] uppercase text-navy select-none">
+                    <nav className="w-full px-6 py-4 md:px-12 flex justify-between items-center bg-off-white shadow-sm border-b border-forest/5 shrink-0">
+                        <div className="font-serif text-xl md:text-2xl font-bold tracking-[2px] uppercase text-forest select-none">
                             Bosques California
                         </div>
 
-                        <div className="hidden lg:block text-navy/40 font-sans text-[10px] tracking-[0.3em] font-bold uppercase">
+                        <div className="hidden lg:block text-forest/40 font-sans text-[10px] tracking-[0.3em] font-bold uppercase">
                             {model.name}
                         </div>
 
@@ -61,10 +61,10 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                             onClick={onClose}
                             className="flex items-center gap-4 group"
                         >
-                            <span className="text-[10px] font-bold tracking-[0.2em] text-navy group-hover:text-gold transition-colors duration-300 hidden sm:block">
+                            <span className="text-[10px] font-bold tracking-[0.2em] text-forest group-hover:text-gold transition-colors duration-300 hidden sm:block">
                                 CERRAR
                             </span>
-                            <div className="p-2 bg-navy text-white rounded-full group-hover:bg-gold transition-all duration-300">
+                            <div className="p-2 bg-forest text-white rounded-full group-hover:bg-gold transition-all duration-300">
                                 <X size={18} className="group-hover:rotate-90 transition-transform duration-300" />
                             </div>
                         </button>
@@ -73,7 +73,7 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                     {/* Main Content Body */}
                     <div className="flex-1 flex flex-col md:flex-row overflow-hidden relative">
                         {/* Left Side: Immersive Tour */}
-                        <div className="w-full md:w-3/5 h-[40vh] md:h-full relative overflow-hidden bg-navy">
+                        <div className="w-full md:w-3/5 h-[40vh] md:h-full relative overflow-hidden bg-forest">
                             <ModelTour gallery={model.gallery} />
                         </div>
 
@@ -86,10 +86,10 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                                 className="max-w-xl flex flex-col h-full justify-between"
                             >
                                 <div>
-                                    <span className="text-navy tracking-widest font-bold text-sm uppercase mb-3 block opacity-80">
+                                    <span className="text-forest tracking-widest font-bold text-sm uppercase mb-3 block opacity-80">
                                         Ficha Técnica
                                     </span>
-                                    <h2 className="font-serif text-4xl md:text-6xl text-navy mb-4 leading-tight">
+                                    <h2 className="font-serif text-4xl md:text-6xl text-forest mb-4 leading-tight">
                                         {model.name}
                                     </h2>
 
@@ -110,7 +110,7 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                                                     {spec.label.toLowerCase().includes('construcción') && <Ruler size={16} className="text-gold" />}
                                                     {spec.label.toLowerCase().includes('recámaras') && <BedDouble size={16} className="text-gold" />}
                                                     {spec.label.toLowerCase().includes('baños') && <Bath size={16} className="text-gold" />}
-                                                    <span className="font-serif text-2xl text-navy">{spec.value}</span>
+                                                    <span className="font-serif text-2xl text-forest">{spec.value}</span>
                                                 </div>
                                             </div>
                                         ))}
@@ -119,7 +119,7 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
 
                                 {/* Call to Action */}
                                 <div className="space-y-4 mt-auto">
-                                    <button className="w-full bg-navy text-white px-6 py-4 rounded-xl text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold transition-all duration-700 flex items-center justify-center gap-4 group relative overflow-hidden shadow-xl shadow-navy/10">
+                                    <button className="w-full bg-forest text-white px-6 py-4 rounded-xl text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold transition-all duration-700 flex items-center justify-center gap-4 group relative overflow-hidden shadow-xl shadow-forest/10">
                                         <span className="relative z-10">Agendar Recorrido</span>
                                         <ArrowRight size={16} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
                                         <div className="absolute inset-y-0 left-0 w-0 bg-gold transition-all duration-700 group-hover:w-full" />
@@ -142,3 +142,4 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
 };
 
 export default ModelModal;
+

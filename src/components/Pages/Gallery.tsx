@@ -48,7 +48,7 @@ const Gallery: React.FC = () => {
                 loading="lazy"
                 className="w-full h-[120%] -mt-[10%] object-cover transition-all duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0" 
             />
-            <div className="absolute inset-0 bg-navy/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-forest/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
         </motion.div>
       ))}
     </div>
@@ -60,7 +60,7 @@ const Gallery: React.FC = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-serif text-5xl md:text-7xl text-navy"
+            className="font-serif text-5xl md:text-7xl text-forest"
           >
               Entorno Visual
           </motion.h1>
@@ -77,3 +77,4 @@ const Gallery: React.FC = () => {
 };
 
 export default Gallery;
+

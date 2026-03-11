@@ -18,7 +18,7 @@ const zones = [
 
     <main class="pt-32 px-6 max-w-7xl mx-auto min-h-screen">
         <div class="text-center mb-16">
-            <h1 class="font-serif text-5xl md:text-6xl text-navy mb-6">Casas en Venta en el Sur de GDL</h1>
+            <h1 class="font-serif text-5xl md:text-6xl text-forest mb-6">Casas en Venta en el Sur de GDL</h1>
             <p class="max-w-3xl mx-auto text-gray-600 text-lg">
                 La zona sur de Guadalajara se ha consolidado como el polo de desarrollo residencial más importante 
                 de la última década. Bosques California te ofrece la mejor ubicación dentro de este corredor de plusvalía.
@@ -28,10 +28,11 @@ const zones = [
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {zones.map(zone => (
                 <a href={`/casas-en-venta/${zone.slug}`} class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-gold hover:shadow-xl transition-all text-center group">
-                    <h3 class="font-serif text-2xl text-navy group-hover:text-gold mb-2">{zone.name}</h3>
+                    <h3 class="font-serif text-2xl text-forest group-hover:text-gold mb-2">{zone.name}</h3>
                     <span class="text-sm text-gray-400 uppercase tracking-widest">Ver Disponibilidad</span>
                 </a>
             ))}
         </div>
     </main>
 </Layout>
+

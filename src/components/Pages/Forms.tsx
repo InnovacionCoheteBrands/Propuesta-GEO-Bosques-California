@@ -30,7 +30,7 @@ export const FormContainer: React.FC<{
         return (
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center p-12 bg-white rounded-xl shadow-xl">
                 <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">✓</div>
-                <h3 className="font-serif text-3xl text-navy mb-2">¡Mensaje Enviado!</h3>
+                <h3 className="font-serif text-3xl text-forest mb-2">¡Mensaje Enviado!</h3>
                 <p className="text-gray-500">Un asesor se pondrá en contacto a la brevedad.</p>
                 <button onClick={() => setStatus('idle')} className="mt-6 text-gold font-bold text-xs uppercase tracking-widest hover:underline">Enviar otro</button>
             </motion.div>
@@ -39,7 +39,7 @@ export const FormContainer: React.FC<{
 
     return (
         <div className={`h-full flex flex-col justify-center ${dark ? 'bg-transparent p-0 shadow-none border-none' : 'bg-white p-12 md:p-16 rounded-3xl shadow-2xl border border-gray-50'}`}>
-            <h2 className={`font-serif text-3xl md:text-4xl mb-4 ${dark ? 'text-white' : 'text-navy'}`}>{title}</h2>
+            <h2 className={`font-serif text-3xl md:text-4xl mb-4 ${dark ? 'text-white' : 'text-forest'}`}>{title}</h2>
             {subtitle && <p className={`${dark ? 'text-white/60' : 'text-gray-500'} mb-8 font-light`}>{subtitle}</p>}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -50,12 +50,12 @@ export const FormContainer: React.FC<{
                         type={f.type || "text"}
                         name={f.name}
                         placeholder={f.placeholder}
-                        className={`w-full border-b py-3 bg-transparent focus:outline-none transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/30 focus:border-gold' : 'border-gray-200 text-navy placeholder:text-gray-300 focus:border-gold'}`}
+                        className={`w-full border-b py-3 bg-transparent focus:outline-none transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/30 focus:border-gold' : 'border-gray-200 text-forest placeholder:text-gray-300 focus:border-gold'}`}
                     />
                 ))}
                 <button
                     disabled={status === 'submitting'}
-                    className="bg-navy text-white mt-4 py-4 rounded-full uppercase text-xs tracking-[0.2em] font-bold hover:bg-gold transition-colors duration-300 disabled:opacity-50"
+                    className="bg-forest text-white mt-4 py-4 rounded-full uppercase text-xs tracking-[0.2em] font-bold hover:bg-gold transition-colors duration-300 disabled:opacity-50"
                 >
                     {status === 'submitting' ? 'Enviando...' : btnText}
                 </button>
@@ -68,7 +68,7 @@ export const ContactPage: React.FC = () => (
     <div className="pt-32 pb-24 min-h-screen bg-off-white flex items-center justify-center px-6">
         <div className="flex flex-col gap-12 max-w-7xl w-full">
             {/* Info Header */}
-            <div className="w-full bg-navy text-white p-8 md:p-12 rounded-3xl shadow-xl">
+            <div className="w-full bg-forest text-white p-8 md:p-12 rounded-3xl shadow-xl">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                     <div>
                         <span className="text-gold font-bold text-xs uppercase tracking-widest mb-2 block">Contacto</span>
@@ -100,7 +100,7 @@ export const ContactPage: React.FC = () => (
 export const ReferralPage: React.FC = () => (
     <div className="pt-32 pb-24 min-h-screen bg-off-white flex flex-col items-center justify-center px-6">
         <div className="text-center mb-12 max-w-2xl">
-            <h1 className="font-serif text-5xl md:text-6xl text-navy mb-4">Gana hasta $10,000 MXN</h1>
+            <h1 className="font-serif text-5xl md:text-6xl text-forest mb-4">Gana hasta $10,000 MXN</h1>
             <p className="text-gray-500">Invita a tus amigos y familiares a vivir en Bosques California y recibe una bonificación exclusiva al escriturar.</p>
         </div>
         <div className="w-full max-w-lg">
@@ -119,3 +119,4 @@ export const ReferralPage: React.FC = () => (
         </div>
     </div>
 );
+

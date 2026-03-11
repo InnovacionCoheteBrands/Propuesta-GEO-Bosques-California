@@ -50,8 +50,8 @@ const pointsOfInterest = [
         <!-- Hero Section -->
         <section class="relative pt-32 pb-20 px-6 overflow-hidden">
             <div class="max-w-7xl mx-auto text-center relative z-10">
-                <span class="inline-block py-1 px-3 rounded-full border border-navy/20 text-navy text-xs tracking-[0.2em] uppercase mb-6 bg-white/50 backdrop-blur-sm">Conectividad Total</span>
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-navy mb-8 leading-tight">
+                <span class="inline-block py-1 px-3 rounded-full border border-forest/20 text-forest text-xs tracking-[0.2em] uppercase mb-6 bg-white/50 backdrop-blur-sm">Conectividad Total</span>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-forest mb-8 leading-tight">
                     El Corazón <br/>
                     <span class="italic text-gold">del Sur</span>
                 </h1>
@@ -73,7 +73,7 @@ const pointsOfInterest = [
                 <!-- Left: Points of Interest -->
                 <div class="lg:col-span-4 space-y-12 pt-8">
                     <div>
-                        <h2 class="font-serif text-3xl text-navy mb-6">Puntos de Interés</h2>
+                        <h2 class="font-serif text-3xl text-forest mb-6">Puntos de Interés</h2>
                         <p class="text-gray-500 font-light mb-8">
                             Todo lo que necesitas para una vida plena se encuentra a solo unos minutos de tu hogar.
                         </p>
@@ -82,7 +82,7 @@ const pointsOfInterest = [
                     <div class="space-y-8">
                         {pointsOfInterest.map((category) => (
                             <div class="group">
-                                <h3 class="text-lg font-medium text-navy border-b border-navy/10 pb-2 mb-4 flex items-center gap-2">
+                                <h3 class="text-lg font-medium text-forest border-b border-forest/10 pb-2 mb-4 flex items-center gap-2">
                                     <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
                                     {category.category}
                                 </h3>
@@ -97,19 +97,19 @@ const pointsOfInterest = [
                         ))}
                     </div>
                     
-                    <div class="bg-navy text-white p-8 rounded-2xl relative overflow-hidden group hover:shadow-xl transition-all duration-500">
+                    <div class="bg-forest text-white p-8 rounded-2xl relative overflow-hidden group hover:shadow-xl transition-all duration-500">
                          <div class="absolute top-0 right-0 w-32 h-32 bg-gold/20 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
                          <h3 class="font-serif text-2xl mb-2 relative z-10">Agenda tu Visita</h3>
                          <p class="text-white/70 text-sm mb-6 relative z-10 font-light">Ven a conocer tu nuevo entorno y enamórate de la zona.</p>
-                         <button class="w-full py-3 bg-white text-navy font-medium text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-colors duration-300 relative z-10">
+                         <a href="/contacto" class="block w-full py-3 bg-white text-forest font-medium text-sm tracking-widest uppercase hover:bg-gold hover:text-white transition-colors duration-300 relative z-10 text-center">
                              Contactar Asesor
-                         </button>
+                         </a>
                     </div>
                 </div>
 
                 <!-- Right: Map Visualization -->
                 <div class="lg:col-span-8">
-                    <div class="relative bg-white p-4 rounded-3xl shadow-2xl shadow-navy/5">
+                    <div class="relative bg-white p-4 rounded-3xl shadow-2xl shadow-forest/5">
                         <div class="aspect-[16/9] w-full bg-gray-100 rounded-2xl overflow-hidden relative shadow-inner group">
                              <!-- Real Google Maps Iframe -->
                              <iframe 
@@ -123,15 +123,15 @@ const pointsOfInterest = [
                         </div>
                         
                         <div class="mt-6 grid grid-cols-3 gap-4 text-center">
-                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-navy/10 transition-colors">
+                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-forest/10 transition-colors">
                                 <span class="block text-2xl font-serif text-gold mb-1">5 min</span>
                                 <span class="text-xs text-gray-500 uppercase tracking-wider">A Plaza Galerías</span>
                             </div>
-                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-navy/10 transition-colors">
+                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-forest/10 transition-colors">
                                 <span class="block text-2xl font-serif text-gold mb-1">15 min</span>
                                 <span class="text-xs text-gray-500 uppercase tracking-wider">López Mateos Sur</span>
                             </div>
-                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-navy/10 transition-colors">
+                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-forest/10 transition-colors">
                                 <span class="block text-2xl font-serif text-gold mb-1">10 min</span>
                                 <span class="text-xs text-gray-500 uppercase tracking-wider">Hospitales</span>
                             </div>
@@ -145,7 +145,7 @@ const pointsOfInterest = [
         <section class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="font-serif text-4xl text-navy mb-4">Zonas Cercanas</h2>
+                    <h2 class="font-serif text-4xl text-forest mb-4">Zonas Cercanas</h2>
                     <p class="text-gray-500 font-light max-w-2xl mx-auto">Lugares emblemáticos que elevan tu calidad de vida.</p>
                 </div>
 
@@ -157,7 +157,7 @@ const pointsOfInterest = [
                                 alt={zone.title} 
                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                             />
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
                             
                             <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                 <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">{zone.distance}</p>
@@ -176,3 +176,4 @@ const pointsOfInterest = [
         </section>
     </div>
 </Layout>
+

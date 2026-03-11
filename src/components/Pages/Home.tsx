@@ -184,7 +184,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
     <div ref={containerRef} className="w-full">
 
       {/* Hero Section */}
-      <section className="hero-container relative h-screen w-full overflow-hidden flex items-center justify-center bg-navy">
+      <section className="hero-container relative h-screen w-full overflow-hidden flex items-center justify-center bg-forest">
         <div ref={heroImgContainerRef} className="absolute inset-0 z-0 bg-off-white">
           <img
             ref={heroImgRef}
@@ -192,7 +192,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
             className="w-full h-full object-cover scale-110"
             alt="Bosques California - Familia disfrutando la alberca"
           />
-          <div className="absolute inset-0 bg-navy/30" />
+          <div className="absolute inset-0 bg-forest/30" />
         </div>
         <div ref={heroTextRef} className="relative z-10 text-center text-white px-4">
           <p className="uppercase tracking-[0.3em] text-sm md:text-base mb-6 font-medium">Exclusividad y Lujo con una Ubicación Privilegiada</p>
@@ -201,7 +201,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
           </h1>
           <button
             onClick={() => onNavigate('contacto')}
-            className="bg-gold text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-navy transition-all duration-300"
+            className="bg-gold text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-forest transition-all duration-300"
           >
             Agenda tu cita
           </button>
@@ -219,7 +219,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
           {/* Intro Panel */}
           <div className="horizontal-panel w-full md:w-screen h-[50vh] md:h-screen flex items-center justify-center px-8 md:px-20 bg-off-white flex-shrink-0">
             <div className="max-w-2xl text-center">
-              <h2 className="font-serif text-4xl md:text-6xl text-navy mb-6">Modelos Disponibles</h2>
+              <h2 className="font-serif text-4xl md:text-6xl text-forest mb-6">Modelos Disponibles</h2>
               <p className="text-gray-600 text-lg md:text-xl font-light">
                 Nuestras residencias están diseñadas para mejorar tu calidad de vida con arquitectura de vanguardia y espacios inteligentes.
               </p>
@@ -229,7 +229,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
           {/* Model Panels - Showcase all models */}
           {HOUSE_MODELS.map((model, index) => (
             <div key={model.id} className="horizontal-panel w-full md:w-screen h-screen flex items-center justify-center px-4 md:px-20 bg-off-white relative flex-shrink-0 border-t md:border-t-0 border-gray-100">
-              <span className="absolute text-[15vw] md:text-[20vw] font-serif text-navy/5 font-bold pointer-events-none z-0 select-none">
+              <span className="absolute text-[15vw] md:text-[20vw] font-serif text-forest/5 font-bold pointer-events-none z-0 select-none">
                 {model.bgText}
               </span>
               <div className="model-card relative z-10 grid md:grid-cols-2 gap-8 md:gap-16 items-center max-w-6xl w-full">
@@ -238,9 +238,9 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
                 </div>
                 <div className="text-center md:text-left">
                   <span className="text-gold tracking-widest text-xs font-bold uppercase mb-2 block">{model.specs[0].label} {model.specs[0].value}</span>
-                  <h2 className="font-serif text-4xl md:text-6xl text-navy mb-6">{model.name}</h2>
+                  <h2 className="font-serif text-4xl md:text-6xl text-forest mb-6">{model.name}</h2>
                   <p className="text-gray-500 mb-8 font-light">{model.description}</p>
-                  <button onClick={() => onNavigate('modelos')} className="border border-navy text-navy px-8 py-3 rounded-full uppercase text-xs tracking-widest hover:bg-navy hover:text-white transition-all">
+                  <button onClick={() => onNavigate('modelos')} className="border border-forest text-forest px-8 py-3 rounded-full uppercase text-xs tracking-widest hover:bg-forest hover:text-white transition-all">
                     Ver Ficha
                   </button>
                 </div>
@@ -248,14 +248,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
 
               {/* Scroll Indicator - Right side */}
               {index < HOUSE_MODELS.length - 1 && (
-                <div className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 text-navy/30 flex-col items-center gap-2 animate-pulse">
+                <div className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 text-forest/30 flex-col items-center gap-2 animate-pulse">
                   <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
                   <ArrowDown size={24} className="rotate-[-90deg]" />
                 </div>
               )}
 
               {/* Scroll Indicator - Bottom for mobile */}
-              <div className="md:hidden absolute bottom-8 left-1/2 -translate-x-1/2 text-navy/30 flex flex-col items-center gap-2 animate-bounce">
+              <div className="md:hidden absolute bottom-8 left-1/2 -translate-x-1/2 text-forest/30 flex flex-col items-center gap-2 animate-bounce">
                 <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
                 <ArrowDown size={24} />
               </div>
@@ -265,14 +265,14 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
           {/* CTA Panel */}
           <div className="horizontal-panel w-full md:w-screen h-[50vh] md:h-screen flex items-center justify-center bg-off-white flex-shrink-0 relative">
             <div className="text-center">
-              <h3 className="font-serif text-4xl text-navy mb-6">¿Quieres ver más?</h3>
+              <h3 className="font-serif text-4xl text-forest mb-6">¿Quieres ver más?</h3>
               <button onClick={() => onNavigate('modelos')} className="bg-gold text-white px-12 py-4 rounded-full uppercase tracking-widest font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
                 Catálogo Completo
               </button>
             </div>
 
             {/* Scroll Indicator Arrow */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-navy/40 animate-bounce flex flex-col items-center gap-2">
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-forest/40 animate-bounce flex flex-col items-center gap-2">
               <span className="text-[10px] uppercase tracking-widest font-bold">Desliza</span>
               <ArrowDown size={32} />
             </div>
@@ -285,7 +285,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         <div className="flex flex-col md:flex-row min-h-screen px-6 md:px-12 gap-12 py-24">
           <div className="md:w-1/3 md:sticky md:top-32 h-fit z-20">
             <span className="text-gold uppercase tracking-widest text-xl font-bold">Amenidades</span>
-            <h2 className="font-serif text-5xl md:text-6xl text-navy mt-4 mb-6 leading-tight">Espacios que<br />trascienden.</h2>
+            <h2 className="font-serif text-5xl md:text-6xl text-forest mt-4 mb-6 leading-tight">Espacios que<br />trascienden.</h2>
             <p className="text-gray-600 font-light text-lg">Diseñados para crear armonía y bienestar en el sur de la ciudad.</p>
           </div>
 
@@ -297,7 +297,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
                 style={{ zIndex: index + 1 }}
               >
                 <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-transparent to-transparent opacity-80" />
                 <div className="absolute bottom-8 left-8 text-white pr-8">
                   <h3 className="font-serif text-3xl md:text-4xl mb-2">{item.title}</h3>
                   <p className="font-light opacity-90">{item.description}</p>
@@ -310,20 +310,20 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
 
       {/* CEM Section */}
       <section className="py-32 px-6 bg-white text-center">
-        <h4 className="text-gray-400 font-bold text-xl tracking-widest mb-16">EXPERIENCIA <span className="text-navy">EXTRAORDINARIA</span></h4>
+        <h4 className="text-gray-400 font-bold text-xl tracking-widest mb-16">EXPERIENCIA <span className="text-forest">EXTRAORDINARIA</span></h4>
         <div ref={cemRef} className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <div className="flex flex-col items-center">
             <div className="w-20 h-20 rounded-full bg-green-500/10 text-green-600 flex items-center justify-center mb-6">
               <HomeIcon size={32} />
             </div>
-            <h3 className="font-serif text-2xl text-navy mb-3">Diseño Californiano</h3>
+            <h3 className="font-serif text-2xl text-forest mb-3">Diseño Californiano</h3>
             <p className="text-gray-500 font-light max-w-xs">Arquitectura pensada para maximizar la luz, el espacio y tu comodidad.</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="w-20 h-20 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-6">
               <Shield size={32} />
             </div>
-            <h3 className="font-serif text-2xl text-navy mb-3">Plusvalía Asegurada</h3>
+            <h3 className="font-serif text-2xl text-forest mb-3">Plusvalía Asegurada</h3>
           </div>
         </div>
       </section>
@@ -342,7 +342,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-gold uppercase tracking-widest text-sm font-bold">Preguntas Frecuentes</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-navy mt-4">Todo lo que necesitas saber</h2>
+            <h2 className="font-serif text-4xl md:text-5xl text-forest mt-4">Todo lo que necesitas saber</h2>
           </div>
           <div className="space-y-4">
             {[
@@ -364,7 +364,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               }
             ].map((item, i) => (
               <details key={i} className="group border-b border-gray-100 pb-4 outline-none">
-                <summary className="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-navy py-4 group-open:text-gold transition-colors">
+                <summary className="flex justify-between items-center cursor-pointer list-none text-xl font-serif text-forest py-4 group-open:text-gold transition-colors">
                   {item.q}
                   <span className="text-2xl transition-transform group-open:rotate-45">+</span>
                 </summary>
@@ -377,7 +377,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
         </div>
       </section>
 
-      <footer className="bg-navy py-24 text-center text-white flex flex-col items-center">
+      <footer className="bg-forest py-24 text-center text-white flex flex-col items-center">
         <img
           src="/assets/logo-bosques.png"
           alt="Bosques California"

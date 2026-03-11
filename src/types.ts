@@ -58,3 +58,4 @@ export interface PrequalifierData {
   email: string;
   phone: string;
 }
+

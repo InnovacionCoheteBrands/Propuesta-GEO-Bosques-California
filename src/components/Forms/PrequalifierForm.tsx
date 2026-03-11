@@ -61,12 +61,12 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className={`text-center p-12 rounded-3xl ${dark ? 'bg-navy/50' : 'bg-white shadow-2xl'}`}
+                className={`text-center p-12 rounded-3xl ${dark ? 'bg-forest/50' : 'bg-white shadow-2xl'}`}
             >
                 <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 size={40} />
                 </div>
-                <h3 className={`font-serif text-3xl mb-4 ${dark ? 'text-white' : 'text-navy'}`}>¡Pre-calificación Exitosa!</h3>
+                <h3 className={`font-serif text-3xl mb-4 ${dark ? 'text-white' : 'text-forest'}`}>¡Pre-calificación Exitosa!</h3>
                 <p className={`${dark ? 'text-white/60' : 'text-gray-500'} mb-8`}>
                     Hemos recibido tus datos. Un asesor especializado en el perfil de <strong>{formData.budget}</strong> se pondrá en contacto contigo a la brevedad.
                 </p>
@@ -110,7 +110,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                             className="space-y-5"
                         >
                             <div className="space-y-3">
-                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
+                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-forest'}`}>
                                     1. ¿Para qué buscas tu casa?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -119,7 +119,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                             key={opt}
                                             type="button"
                                             onClick={() => handleSelectOption('purpose', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all h-full ${formData.purpose === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
+                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all h-full ${formData.purpose === opt ? 'bg-forest text-white border-forest' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
                                         >
                                             {opt}
                                         </button>
@@ -128,7 +128,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                             </div>
 
                             <div className="space-y-3">
-                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
+                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-forest'}`}>
                                     2. ¿Qué buscas en tu nueva casa?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
@@ -137,7 +137,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                             key={opt}
                                             type="button"
                                             onClick={() => handleSelectOption('decisionFactor', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all h-full flex items-center ${formData.decisionFactor === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
+                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all h-full flex items-center ${formData.decisionFactor === opt ? 'bg-forest text-white border-forest' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
                                         >
                                             {opt}
                                         </button>
@@ -156,7 +156,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                             className="space-y-5"
                         >
                             <div className="space-y-3">
-                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
+                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-forest'}`}>
                                     3. ¿Cuál es su rango de presupuesto?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
@@ -165,7 +165,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                             key={opt}
                                             type="button"
                                             onClick={() => handleSelectOption('budget', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all h-full ${formData.budget === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
+                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all h-full ${formData.budget === opt ? 'bg-forest text-white border-forest' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
                                         >
                                             {opt}
                                         </button>
@@ -174,7 +174,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                             </div>
 
                             <div className="space-y-3">
-                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
+                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-forest'}`}>
                                     4. ¿Cómo planea financiar la compra?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -183,7 +183,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                             key={opt}
                                             type="button"
                                             onClick={() => handleSelectOption('financing', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.financing === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
+                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.financing === opt ? 'bg-forest text-white border-forest' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
                                         >
                                             {opt}
                                         </button>
@@ -192,7 +192,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                             </div>
 
                             <div className="space-y-3">
-                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-navy'}`}>
+                                <label className={`block text-[10px] uppercase tracking-widest font-bold ${dark ? 'text-white' : 'text-forest'}`}>
                                     5. ¿Cómo prefieres ser contactado?
                                 </label>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
@@ -201,7 +201,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                             key={opt}
                                             type="button"
                                             onClick={() => handleSelectOption('contactPreference', opt)}
-                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.contactPreference === opt ? 'bg-navy text-white border-navy' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
+                                            className={`text-left px-4 py-2.5 rounded-lg border text-xs sm:text-sm transition-all ${formData.contactPreference === opt ? 'bg-forest text-white border-forest' : (dark ? 'bg-white/5 border-white/10 text-white/70 hover:bg-white/10' : 'bg-gray-100 border-gray-200 text-gray-800 hover:bg-gray-200')}`}
                                         >
                                             {opt}
                                         </button>
@@ -229,7 +229,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         value={formData.name}
                                         onChange={handleInputChange}
                                         placeholder="Ej. Juan Pérez"
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-forest placeholder:text-gray-300'}`}
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -241,7 +241,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         value={formData.email}
                                         onChange={handleInputChange}
                                         placeholder="juan@ejemplo.com"
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-forest placeholder:text-gray-300'}`}
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -253,7 +253,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         value={formData.phone}
                                         onChange={handleInputChange}
                                         placeholder="33 0000 0000"
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-forest placeholder:text-gray-300'}`}
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -265,7 +265,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         value={formData.whatsapp}
                                         onChange={handleInputChange}
                                         placeholder="33 0000 0000"
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-forest placeholder:text-gray-300'}`}
                                     />
                                 </div>
                             </div>
@@ -279,7 +279,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         value={formData.company}
                                         onChange={handleInputChange}
                                         placeholder="Nombre de tu empresa"
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-forest placeholder:text-gray-300'}`}
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -290,7 +290,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         value={formData.position}
                                         onChange={handleInputChange}
                                         placeholder="Tu cargo o puesto"
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-navy placeholder:text-gray-300'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light ${dark ? 'border-white/20 text-white placeholder:text-white/20' : 'border-gray-200 text-forest placeholder:text-gray-300'}`}
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -299,7 +299,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                                         name="decisionMaker"
                                         value={formData.decisionMaker}
                                         onChange={handleInputChange}
-                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light appearance-none ${dark ? 'border-white/20 text-white' : 'border-gray-200 text-navy'}`}
+                                        className={`w-full border-b py-2 bg-transparent focus:outline-none focus:border-gold transition-colors font-light appearance-none ${dark ? 'border-white/20 text-white' : 'border-gray-200 text-forest'}`}
                                     >
                                         <option value="" disabled>Seleccione...</option>
                                         <option value="Yo únicamente">Yo únicamente</option>
@@ -318,7 +318,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                         <button
                             type="button"
                             onClick={handleBack}
-                            className={`flex items-center justify-center gap-2 px-6 py-4 rounded-full text-xs uppercase tracking-widest font-bold transition-all ${dark ? 'bg-white/5 text-white hover:bg-white/10' : 'bg-gray-100 text-navy hover:bg-gray-200'}`}
+                            className={`flex items-center justify-center gap-2 px-6 py-4 rounded-full text-xs uppercase tracking-widest font-bold transition-all ${dark ? 'bg-white/5 text-white hover:bg-white/10' : 'bg-gray-100 text-forest hover:bg-gray-200'}`}
                         >
                             <ChevronLeft size={16} />
                             Atrás
@@ -339,7 +339,7 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                         <button
                             type="submit"
                             disabled={!isStepValid() || status === 'submitting'}
-                            className="flex-1 flex items-center justify-center gap-2 bg-navy text-white px-8 py-4 rounded-full text-xs uppercase tracking-[0.2em] font-bold hover:bg-gold transition-colors duration-300 disabled:opacity-50"
+                            className="flex-1 flex items-center justify-center gap-2 bg-forest text-white px-8 py-4 rounded-full text-xs uppercase tracking-[0.2em] font-bold hover:bg-gold transition-colors duration-300 disabled:opacity-50"
                         >
                             {status === 'submitting' ? 'Procesando...' : 'Enviar'}
                         </button>
@@ -351,3 +351,4 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
 };
 
 export default PrequalifierForm;
+

@@ -20,7 +20,7 @@ const Models: React.FC = () => {
         <motion.h1
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="font-serif text-5xl md:text-7xl text-navy"
+          className="font-serif text-5xl md:text-7xl text-forest"
         >
           Residencias de Autor
         </motion.h1>
@@ -50,14 +50,14 @@ const Models: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="w-full md:w-1/2"
             >
-              <h2 className="font-serif text-4xl md:text-5xl text-navy mb-4">{model.name}</h2>
+              <h2 className="font-serif text-4xl md:text-5xl text-forest mb-4">{model.name}</h2>
               <p className="text-gray-500 font-light mb-8 text-lg">{model.description}</p>
 
               <div className="grid grid-cols-2 gap-y-6 gap-x-8 border-t border-gray-200 pt-6 mb-8">
                 {model.specs.map((spec, i) => (
                   <div key={i}>
                     <span className="block text-xs text-gray-400 uppercase tracking-widest mb-1">{spec.label}</span>
-                    <strong className="font-serif text-xl text-navy">{spec.value}</strong>
+                    <strong className="font-serif text-xl text-forest">{spec.value}</strong>
                   </div>
                 ))}
               </div>
@@ -65,11 +65,11 @@ const Models: React.FC = () => {
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => setSelectedModel(model)}
-                  className="bg-navy text-white px-8 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-gold transition-colors duration-300"
+                  className="bg-forest text-white px-8 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-gold transition-colors duration-300"
                 >
                   Ver Detalles
                 </button>
-                <button className="border border-navy text-navy px-8 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-navy hover:text-white transition-all duration-300">
+                <button className="border border-forest text-forest px-8 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-forest hover:text-white transition-all duration-300">
                   Descargar Ficha
                 </button>
               </div>
@@ -87,3 +87,4 @@ const Models: React.FC = () => {
 };
 
 export default Models;
+

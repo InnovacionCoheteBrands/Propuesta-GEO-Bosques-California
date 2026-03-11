@@ -13,7 +13,7 @@ const description = "Descubre las amenidades exclusivas de Bosques California: A
     <main class="pt-24 min-h-screen bg-off-white">
         <section class="max-w-7xl mx-auto px-6 py-12 text-center">
             <span class="text-gold uppercase tracking-widest font-bold text-sm">Estilo de Vida</span>
-            <h1 class="font-serif text-5xl md:text-7xl text-navy mt-4 mb-8">Espacios que Trascienden</h1>
+            <h1 class="font-serif text-5xl md:text-7xl text-forest mt-4 mb-8">Espacios que Trascienden</h1>
             <p class="max-w-2xl mx-auto text-gray-600 text-lg leading-relaxed font-light mb-16">
                 En Bosques California, cada amenidad ha sido concebida para elevar tu calidad de vida. 
                 Desde el ejercicio matutino en nuestro gimnasio equipado hasta tardes inolvidables en la alberca tipo resort, 
@@ -26,7 +26,7 @@ const description = "Descubre las amenidades exclusivas de Bosques California: A
                     return (
                         <a href={`/amenidades/${slug}`} class="group relative aspect-[4/5] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block">
                             <img src={amenity.image} alt={amenity.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-transparent to-transparent opacity-80" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-transparent to-transparent opacity-80" />
                             <div class="absolute bottom-8 left-8 text-white text-left pr-8">
                                 <h3 class="font-serif text-2xl mb-2 group-hover:text-gold transition-colors">{amenity.title}</h3>
                                 <p class="text-sm opacity-90 line-clamp-2 font-light text-gray-200">Ver detalles →</p>
@@ -38,3 +38,4 @@ const description = "Descubre las amenidades exclusivas de Bosques California: A
         </section>
     </main>
 </Layout>
+

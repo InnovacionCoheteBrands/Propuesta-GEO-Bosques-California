@@ -59,7 +59,7 @@ const description = `Descubre ${zone.title}, un punto clave cerca de Bosques Cal
                 class="absolute inset-0 w-full h-full object-cover"
                 style="view-transition-name: hero-image;" 
             />
-            <div class="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-forest/60 backdrop-blur-[2px]"></div>
             
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 text-white pt-24">
                 <span class="text-gold tracking-[0.3em] text-xs font-bold uppercase mb-4 animate-fade-in-up">Ubicación Premium</span>
@@ -76,12 +76,12 @@ const description = `Descubre ${zone.title}, un punto clave cerca de Bosques Cal
         <main class="max-w-4xl mx-auto px-6 py-20 bg-white -mt-20 relative rounded-t-3xl shadow-xl z-10">
             <div class="grid md:grid-cols-12 gap-12">
                 <div class="md:col-span-8">
-                    <h2 class="font-serif text-3xl text-navy mb-6">Sobre la Zona</h2>
+                    <h2 class="font-serif text-3xl text-forest mb-6">Sobre la Zona</h2>
                     <p class="text-gray-600 leading-loose text-lg font-light mb-8">
                         {zone.desc}
                     </p>
                     
-                    <h3 class="font-serif text-xl text-navy mb-4 border-b border-gray-100 pb-2">Destacados</h3>
+                    <h3 class="font-serif text-xl text-forest mb-4 border-b border-gray-100 pb-2">Destacados</h3>
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {zone.features.map(feature => (
                             <li class="flex items-center gap-3 text-gray-600">
@@ -96,13 +96,13 @@ const description = `Descubre ${zone.title}, un punto clave cerca de Bosques Cal
                     <div class="bg-off-white p-6 rounded-2xl border border-gray-100">
                         <span class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Distancia</span>
                         <div class="flex items-baseline gap-1">
-                            <span class="text-4xl font-serif text-navy">5-10</span>
+                            <span class="text-4xl font-serif text-forest">5-10</span>
                             <span class="text-sm text-gray-500">minutos</span>
                         </div>
                         <p class="text-xs text-gray-400 mt-2">Tiempo estimado en auto desde Bosques California.</p>
                     </div>
 
-                    <a href="/contacto" class="block w-full text-center py-4 bg-navy text-white text-sm font-medium tracking-widest uppercase hover:bg-gold transition-colors duration-300 rounded-xl">
+                    <a href="/contacto" class="block w-full text-center py-4 bg-forest text-white text-sm font-medium tracking-widest uppercase hover:bg-gold transition-colors duration-300 rounded-xl">
                         Agendar Recorrido
                     </a>
                 </div>

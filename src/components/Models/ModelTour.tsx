@@ -27,7 +27,7 @@ const ModelTour: React.FC<ModelTourProps> = ({ gallery }) => {
     }, [gallery.length]);
 
     return (
-        <div className="relative w-full h-full overflow-hidden bg-navy group">
+        <div className="relative w-full h-full overflow-hidden bg-forest group">
             {/* Immersive Gallery */}
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
@@ -58,7 +58,7 @@ const ModelTour: React.FC<ModelTourProps> = ({ gallery }) => {
                     </motion.div>
 
                     {/* Subtle Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-navy/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest/60 via-transparent to-forest/30" />
                 </motion.div>
             </AnimatePresence>
 
@@ -94,13 +94,13 @@ const ModelTour: React.FC<ModelTourProps> = ({ gallery }) => {
             <div className="absolute bottom-12 right-12 flex gap-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <button
                     onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-navy transition-all duration-300 backdrop-blur-sm"
+                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-forest transition-all duration-300 backdrop-blur-sm"
                 >
                     <ChevronLeft size={20} />
                 </button>
                 <button
                     onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-navy transition-all duration-300 backdrop-blur-sm"
+                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-forest transition-all duration-300 backdrop-blur-sm"
                 >
                     <ChevronRight size={20} />
                 </button>
@@ -120,3 +120,4 @@ const ModelTour: React.FC<ModelTourProps> = ({ gallery }) => {
 };
 
 export default ModelTour;
+

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Layout/Navbar';
 import { HOUSE_MODELS } from '../../constants';
+import Schema from '../../components/SEO/Schema.astro';
 // import ModelDetail from '../../components/Pages/ModelDetail'; // We might need to create this or use existing Models component adapted
 
 export function getStaticPaths() {
@@ -17,31 +18,25 @@ const { model } = Astro.props;
 const title = `Modelo ${model.name} | Bosques California`;
 const description = `Conoce el modelo ${model.name}, una residencia de ${model.specs[0].value} con ${model.specs[1].value} recámaras en Bosques California.`;
 
-const schema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Product",
+const productData = {
   "name": `Casa Modelo ${model.name}`,
   "description": model.description,
   "image": `https://propuesta-bosques-geo.replit.app${model.image}`,
-  "brand": {
-    "@type": "Brand",
-    "name": "Bosques California"
-  },
   "offers": {
     "@type": "Offer",
     "priceCurrency": "MXN",
     "availability": "https://schema.org/InStock",
-    "price": "3500000" // Placeholder, should be dynamic if available
+    "price": "3500000"
   },
   "additionalProperty": model.specs.map(spec => ({
     "@type": "PropertyValue",
     "name": spec.label,
     "value": spec.value
   }))
-});
+};
 ---
 
-<script type="application/ld+json" set:html={schema} />
+<Schema type="Product" data={productData} />
 
 <Layout title={title} description={description}>
     <Navbar client:load currentPage="modelos" onNavigate={() => {}} /> 
@@ -50,19 +45,19 @@ const schema = JSON.stringify({
         <div class="grid md:grid-cols-2 gap-12 items-center min-h-[80vh]">
             <div>
                  <span class="text-gold tracking-widest text-sm font-bold uppercase mb-2 block">Modelo Exclusivo</span>
-                 <h1 class="font-serif text-5xl md:text-7xl text-navy mb-6">{model.name}</h1>
+                 <h1 class="font-serif text-5xl md:text-7xl text-forest mb-6">{model.name}</h1>
                  <p class="text-gray-600 text-lg leading-relaxed mb-8">{model.description}</p>
                  
                  <div class="grid grid-cols-2 gap-6 mb-8">
                     {model.specs.map(spec => (
                         <div class="border-l-2 border-gold pl-4">
                             <span class="block text-xs uppercase tracking-widest text-gray-400">{spec.label}</span>
-                            <span class="block text-xl font-serif text-navy">{spec.value}</span>
+                            <span class="block text-xl font-serif text-forest">{spec.value}</span>
                         </div>
                     ))}
                  </div>
 
-                 <a href="/contacto" class="bg-navy text-white px-8 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-gold transition-colors inline-block">
+                 <a href="/contacto" class="bg-forest text-white px-8 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-gold transition-colors inline-block">
                     Agendar Visita
                  </a>
             </div>
