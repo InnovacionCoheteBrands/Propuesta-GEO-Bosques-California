@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ChatWidget from '../components/Chat/ChatWidget';
+import { ContactPage as ContactFormComponent } from '../components/Pages/Forms';
 
 interface Props {
 	title: string;
@@ -8,6 +9,9 @@ interface Props {
 }
 
 const { title, description = "Descubre Bosques California, el desarrollo residencial más exclusivo de Tlajomulco. Casas con diseño contemporáneo, alberca tipo resort, cancha de pádel y seguridad 24/7." } = Astro.props;
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const showContactForm = pathname !== "/" && pathname !== "/contacto";
 ---
 
 <!doctype html>
@@ -55,6 +59,13 @@ const { title, description = "Descubre Bosques California, el desarrollo residen
 		</div>
 
 		<slot />
+		
+        {showContactForm && (
+            <div class="w-full">
+                <ContactFormComponent client:load />
+            </div>
+        )}
+
 		<ChatWidget client:load />
 		
 		<script>

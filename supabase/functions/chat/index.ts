@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+/// <reference path="./deno.d.ts" />
 import { corsHeaders } from "../_shared/cors.ts"
 
 const GROK_API_URL = "https://api.x.ai/v1/chat/completions";
@@ -8,7 +8,7 @@ interface ChatMessage {
     content: string;
 }
 
-serve(async (req) => {
+Deno.serve(async (req: Request) => {
     // Handle CORS preflight
     if (req.method === 'OPTIONS') {
         return new Response('ok', { headers: corsHeaders })

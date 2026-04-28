@@ -14,13 +14,6 @@ const zones = [
         image: '/images/location-galerias.png' 
     },
     {
-        slug: 'lopez-mateos-sur',
-        title: 'López Mateos Sur',
-        desc: 'Conectividad Directa',
-        distance: 'Acceso Inmediato',
-        image: '/images/location-lopez.png'
-    },
-    {
         slug: 'punto-sur',
         title: 'Punto Sur',
         desc: 'Gastronomía & Vida Nocturna',
@@ -149,9 +142,9 @@ const pointsOfInterest = [
                     <p class="text-gray-500 font-light max-w-2xl mx-auto">Lugares emblemáticos que elevan tu calidad de vida.</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {zones.map(zone => (
-                        <a href={`/ubicacion/${zone.slug}`} class="group relative aspect-[3/4] overflow-hidden rounded-2xl cursor-pointer">
+                        <div class="group relative aspect-[3/4] overflow-hidden rounded-2xl">
                             <img 
                                 src={zone.image} 
                                 alt={zone.title} 
@@ -165,11 +158,8 @@ const pointsOfInterest = [
                                 <p class="text-white/80 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                     {zone.desc}
                                 </p>
-                                <div class="mt-4 inline-flex items-center text-white/90 text-xs border-b border-white/30 pb-1 group-hover:border-white transition-colors">
-                                    Explorar Zona &rarr;
-                                </div>
                             </div>
-                        </a>
+                        </div>
                     ))}
                 </div>
             </div>

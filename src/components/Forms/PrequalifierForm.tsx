@@ -41,12 +41,46 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
         e.preventDefault();
         setStatus('submitting');
 
-        // Simulate API Call
-        console.log('Submitting Prequalification Data:', formData);
+        try {
+            const payload = {
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                whatsapp: formData.whatsapp,
+                company: formData.company,
+                position: formData.position,
+                purpose: formData.purpose,
+                budget: formData.budget,
+                financing: formData.financing,
+                contact_preference: formData.contactPreference,
+                decision_maker: formData.decisionMaker,
+                decision_factor: formData.decisionFactor,
+                source: 'Bosques California — Formulario Web',
+                submitted_at: new Date().toISOString(),
+            };
 
-        setTimeout(() => {
+            const response = await fetch('https://data.widgets.wearekwid.com/api/webhook/36266639/f39afd1faaf6653437e85f9d04a0c6609b2d1e812a2b6316e9937ec654f444bd', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) throw new Error(`Error ${response.status}`);
+
             setStatus('success');
-        }, 1500);
+            
+            // Trigger automatic download
+            const link = document.createElement('a');
+            link.href = '/BROCHURE BOSQUES (actualizado 2026).pdf';
+            link.download = 'Brochure_Bosques_California_2026.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        } catch (err) {
+            console.error('Error al enviar formulario:', err);
+            setStatus('error');
+        }
     };
 
     const isStepValid = () => {
@@ -67,14 +101,41 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                     <CheckCircle2 size={40} />
                 </div>
                 <h3 className={`font-serif text-3xl mb-4 ${dark ? 'text-white' : 'text-forest'}`}>¡Pre-calificación Exitosa!</h3>
-                <p className={`${dark ? 'text-white/60' : 'text-gray-500'} mb-8`}>
+                <p className={`${dark ? 'text-white/60' : 'text-gray-500'} mb-2`}>
                     Hemos recibido tus datos. Un asesor especializado en el perfil de <strong>{formData.budget}</strong> se pondrá en contacto contigo a la brevedad.
+                </p>
+                <p className="text-[10px] text-gold font-bold uppercase tracking-[0.2em] mb-8 animate-pulse">
+                    Tu brochure se está descargando automáticamente...
                 </p>
                 <button
                     onClick={() => { setStep(1); setStatus('idle'); }}
                     className="text-gold font-bold text-xs uppercase tracking-widest hover:underline"
                 >
                     Volver a empezar
+                </button>
+            </motion.div>
+        );
+    }
+
+    if (status === 'error') {
+        return (
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className={`text-center p-12 rounded-3xl ${dark ? 'bg-forest/50' : 'bg-white shadow-2xl'}`}
+            >
+                <div className="w-20 h-20 bg-red-100 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl font-bold">
+                    ✕
+                </div>
+                <h3 className={`font-serif text-3xl mb-4 ${dark ? 'text-white' : 'text-forest'}`}>Algo salió mal</h3>
+                <p className={`${dark ? 'text-white/60' : 'text-gray-500'} mb-8`}>
+                    No pudimos enviar tu información. Por favor intenta de nuevo o contáctanos directamente.
+                </p>
+                <button
+                    onClick={() => setStatus('idle')}
+                    className="text-gold font-bold text-xs uppercase tracking-widest hover:underline"
+                >
+                    Intentar de nuevo
                 </button>
             </motion.div>
         );
@@ -345,6 +406,11 @@ const PrequalifierForm: React.FC<PrequalifierFormProps> = ({ dark }) => {
                         </button>
                     )}
                 </div>
+                {step === 3 && (
+                    <p className={`text-[10px] text-center mt-6 uppercase tracking-widest font-bold ${dark ? 'text-white/30' : 'text-gray-400'}`}>
+                        * Al enviar se descargará automáticamente el brochure informativo
+                    </p>
+                )}
             </form>
         </div>
     );

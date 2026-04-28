@@ -151,7 +151,7 @@ const ModelsShowcase: React.FC<ModelsShowcaseProps> = ({ onNavigate }) => {
                     <div className="text-center">
                         <h3 className="font-serif text-4xl text-forest mb-6">¿Quieres ver más?</h3>
                         <button onClick={() => handleNavigate('modelos')} className="bg-gold text-white px-12 py-4 rounded-full uppercase tracking-widest font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                            Catálogo Completo
+                            Ver más información
                         </button>
                     </div>
                 </div>

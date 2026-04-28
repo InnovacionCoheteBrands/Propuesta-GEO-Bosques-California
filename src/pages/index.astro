@@ -6,13 +6,17 @@ import AmenitiesShowcase from '../components/Pages/AmenitiesShowcase';
 import PrequalifierForm from '../components/Forms/PrequalifierForm';
 import Schema from '../components/SEO/Schema.astro';
 import { AMENITIES, HOUSE_MODELS } from '../constants';
-import { Shield, Home as HomeIcon, MapPin, Mail, Phone, ArrowRight } from 'lucide-react';
+import { Shield, Home as HomeIcon, MapPin, Mail, Phone, ArrowRight, TrendingUp, Sparkles, Key } from 'lucide-react';
 
 const title = "Bosques California | Casas de Lujo en Tlajomulco";
 const description = "Bosques California: Desarrollo residencial exclusivo en el sur de Guadalajara. Casas con diseño californiano contemporáneo, alberca, canchas y seguridad.";
 
 const navScript = `
     const handleNav = (page) => {
+        if (page.startsWith('#')) {
+            window.location.hash = page;
+            return;
+        }
         window.location.href = page === 'home' ? '/' : '/' + page;
     }
 `;
@@ -33,20 +37,124 @@ const faqData = [
 ];
 
 const organizationData = {
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. López Mateos Sur",
+    "addressLocality": "Tlajomulco de Zúñiga",
+    "addressRegion": "Jalisco",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "20.5538244",
+    "longitude": "-103.4733178"
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Catálogo de Casas",
+    "name": "Modelos de Casas en Bosques California",
     "itemListElement": HOUSE_MODELS.map(model => ({
-      "@type": "OfferCatalog",
-      "name": model.name,
-      "url": `https://propuesta-bosques-geo.replit.app/modelos/${model.id}`,
-      "image": `https://propuesta-bosques-geo.replit.app${model.image}`
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "SingleFamilyResidence",
+        "name": `Modelo ${model.name}`,
+        "description": model.description,
+        "image": `https://bosquescalifornia.com${model.image}`,
+        "numberOfRooms": model.specs.find(s => s.label === 'Recámaras')?.value || "3",
+        "occupancy": {
+          "@type": "Occupancy",
+          "numberOfBathroomsTotal": model.specs.find(s => s.label === 'Baños')?.value || "2.5"
+        },
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": model.specs.find(s => s.label === 'Construcción' || s.label === 'Total')?.value.replace(' m²', ''),
+          "unitCode": "MTK"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tlajomulco de Zúñiga",
+          "addressRegion": "Jalisco",
+          "addressCountry": "MX"
+        }
+      }
     }))
   }
 };
+
+const zones = [
+    {
+        slug: 'galerias-santa-anita',
+        title: 'Galerías Santa Anita',
+        desc: 'Lifestyle & Shopping Exclusivo',
+        distance: '3 Minutos',
+        image: '/images/galerias-santa-anita-new.png' 
+    },
+    {
+        slug: 'punto-sur',
+        title: 'Punto Sur',
+        desc: 'Distrito de Lujo y Gastronomía',
+        distance: '5 Minutos',
+        image: '/images/punto-sur-new.png'
+    }
+];
+
+const pointsOfInterest = [
+    { category: 'Educación', items: ['Prepa Tec de Monterrey', 'Instituto Tepeyac', 'Colegio Pedregal'] },
+    { category: 'Salud', items: ['Hospital Puerta de Hierro Sur', 'Hospital de Especialidades'] },
+    { category: 'Shopping', items: ['Plaza Galerías Santa Anita', 'Punto Sur', 'Plaza La Rioja'] }
+];
 ---
 
 <Schema type="Organization" data={organizationData} />
+{HOUSE_MODELS.map(model => (
+  <Schema 
+    type="SingleFamilyResidence" 
+    data={{
+      "name": `Modelo ${model.name} - Bosques California`,
+      "description": model.description,
+      "image": `https://bosquescalifornia.com${model.image}`,
+      "numberOfRooms": model.specs.find(s => s.label === 'Recámaras')?.value || "3",
+      "occupancy": {
+        "@type": "Occupancy",
+        "numberOfBathroomsTotal": model.specs.find(s => s.label === 'Baños')?.value || "2.5"
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": model.specs.find(s => s.label === 'Construcción' || s.label === 'Total')?.value.replace(' m²', ''),
+        "unitCode": "MTK"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tlajomulco de Zúñiga",
+        "addressRegion": "Jalisco",
+        "addressCountry": "MX"
+      },
+      "amenityFeature": AMENITIES.map(a => ({
+        "@type": "LocationFeatureSpecification",
+        "name": a.title,
+        "value": true
+      }))
+    }} 
+  />
+))}
+<Schema 
+  type="BreadcrumbList" 
+  data={{
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://bosquescalifornia.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Modelos",
+        "item": "https://bosquescalifornia.com/modelos"
+      }
+    ]
+  }} 
+/>
 <Schema 
   type="FAQPage" 
   data={faqData.map(f => ({
@@ -63,10 +171,6 @@ const organizationData = {
     <Navbar 
         client:load 
         currentPage="home" 
-        onNavigate={(page) => {
-             const path = page === 'home' ? '/' : `/${page}`;
-             window.location.href = path;
-        }} 
     />
 
     <main class="w-full overflow-x-hidden bg-off-white">
@@ -75,7 +179,7 @@ const organizationData = {
         <section class="relative h-screen w-full flex items-center justify-center bg-forest overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img
-                    src="/images/hero-cover.webp"
+                    src="/images/hero-new-section.webp"
                     class="w-full h-full object-cover opacity-90"
                     alt="Bosques California Residencial - Tlajomulco"
                     loading="eager"
@@ -89,7 +193,7 @@ const organizationData = {
                     Bosques California
                 </h1>
                 <p class="text-lg md:text-xl font-light mb-12 opacity-90 max-w-2xl mx-auto leading-relaxed">
-                    Casas residenciales con diseño californiano contemporáneo y amenidades tipo resort.
+                    Bosques California es un desarrollo residencial exclusivo en Tlajomulco de Zúñiga que ofrece casas de diseño contemporáneo desde 125 m² hasta 173 m² con amenidades premium.
                 </p>
                 <div class="flex flex-col md:flex-row gap-6 justify-center">
                     <a href="/contacto" class="bg-gold text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-white hover:text-forest transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
@@ -105,11 +209,11 @@ const organizationData = {
         <!-- 2. HYDRATED MODELS SHOWCASE (Interactiva) -->
         <ModelsShowcase 
             client:visible 
-            onNavigate={(page) => {
-                const path = page === 'home' ? '/' : `/${page}`;
-                window.location.href = path;
-            }} 
         />
+
+        <!-- 2.1 TABLA DE ESPECIFICACIONES (GEO Optimized) -->
+        <!-- Ocultado temporalmente a solicitud del usuario, pero se mantiene el Schema SEO/GEO -->
+
 
         <!-- 3. HYDRATED AMENITIES SHOWCASE (GSAP Stacking Animation) -->
         <AmenitiesShowcase client:visible />
@@ -118,25 +222,142 @@ const organizationData = {
         <!-- 4. STATIC CEM FEATURES -->
         <section class="py-32 px-6 bg-white text-center">
             <h4 class="text-gray-400 font-bold text-xs tracking-widest mb-16 uppercase">Experiencia Extraordinaria</h4>
-            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-y-16 gap-x-12 max-w-5xl mx-auto">
               <div class="flex flex-col items-center group">
                 <div class="w-24 h-24 rounded-full bg-forest/5 text-forest flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <HomeIcon className="w-10 h-10" />
+                    <MapPin className="w-10 h-10" />
                 </div>
-                <h3 class="font-serif text-3xl text-forest mb-4">Diseño en Tlajomulco</h3>
+                <h3 class="font-serif text-2xl md:text-3xl text-forest mb-4">Ubicación privilegiada.</h3>
                 <p class="text-gray-500 font-light max-w-sm leading-relaxed">
-                    Arquitectura californiana pensada para el clima del sur de Guadalajara, maximizando luz y ventilación.
+                    Conectividad total hacia las principales vías de acceso y zonas comerciales del sur.
                 </p>
               </div>
               <div class="flex flex-col items-center group">
                 <div class="w-24 h-24 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-10 h-10" />
+                    <TrendingUp className="w-10 h-10" />
                 </div>
-                <h3 class="font-serif text-3xl text-forest mb-4">Plusvalía en López Mateos</h3>
+                <h3 class="font-serif text-2xl md:text-3xl text-forest mb-4">Plusvalía Única.</h3>
                 <p class="text-gray-500 font-light max-w-sm leading-relaxed">
-                    Ubicación estratégica en la zona de mayor crecimiento residencial, garantizando tu inversión patrimonial.
+                    Inversión segura en una de las zonas con mayor crecimiento y demanda residencial.
                 </p>
               </div>
+              <div class="flex flex-col items-center group">
+                <div class="w-24 h-24 rounded-full bg-forest/5 text-forest flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Sparkles className="w-10 h-10" />
+                </div>
+                <h3 class="font-serif text-2xl md:text-3xl text-forest mb-4">Diseño Californiano con Acabado de lujo.</h3>
+                <p class="text-gray-500 font-light max-w-sm leading-relaxed">
+                    Arquitectura pensada para maximizar iluminación natural y ventilación en cada espacio.
+                </p>
+              </div>
+              <div class="flex flex-col items-center group">
+                <div class="w-24 h-24 rounded-full bg-gold/10 text-gold flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Key className="w-10 h-10" />
+                </div>
+                <h3 class="font-serif text-2xl md:text-3xl text-forest mb-4">Solo 170 Residencias.</h3>
+                <p class="text-gray-500 font-light max-w-sm leading-relaxed">
+                    Exclusividad y privacidad garantizadas en un entorno seguro para tu familia.
+                </p>
+              </div>
+            </div>
+        </section>
+
+        <!-- Ubicación Section -->
+        <section id="ubicacion" class="px-6 py-24 bg-off-white">
+            <div class="max-w-7xl mx-auto text-center mb-16">
+                <span class="inline-block py-1 px-3 rounded-full border border-forest/20 text-forest text-[10px] tracking-[0.2em] uppercase mb-4 bg-white/50 backdrop-blur-sm">Conectividad Total</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-forest mb-4">Ubicación Estratégica</h2>
+                <p class="text-gray-500 font-light max-w-2xl mx-auto">En el corazón del sur, rodeado de todo lo que necesitas.</p>
+            </div>
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left: Points of Interest -->
+                <div class="lg:col-span-4 space-y-12 pt-8">
+                    <div>
+                        <h2 class="font-serif text-3xl text-forest mb-6">Puntos de Interés</h2>
+                        <p class="text-gray-500 font-light mb-8">
+                            Todo lo que necesitas para una vida plena se encuentra a solo unos minutos de tu hogar.
+                        </p>
+                    </div>
+
+                    <div class="space-y-8">
+                        {pointsOfInterest.map((category) => (
+                            <div class="group">
+                                <h3 class="text-lg font-medium text-forest border-b border-forest/10 pb-2 mb-4 flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                                    {category.category}
+                                </h3>
+                                <ul class="space-y-3">
+                                    {category.items.map(item => (
+                                        <li class="text-gray-500 text-sm pl-4 relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-1 before:h-px before:bg-gray-300">
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Right: Map Visualization -->
+                <div class="lg:col-span-8">
+                    <div class="relative bg-white p-4 rounded-3xl shadow-2xl shadow-forest/5">
+                        <div class="aspect-[16/9] w-full bg-gray-100 rounded-2xl overflow-hidden relative shadow-inner group">
+                             <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3735.8376042007794!2d-103.4733178!3d20.5538244!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f55001599fbc1%3A0x367efb52a27b6197!2sBosques%20california!5e0!3m2!1ses-419!2sus!4v1768429023051!5m2!1ses-419!2sus"
+                                class="w-full h-full grayscale-[0.2] contrast-[1.1] opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:contrast-100 transition-all duration-700"
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-forest/10 transition-colors">
+                                <span class="block text-2xl font-serif text-gold mb-1">5 min</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">A Plaza Galerías</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-forest/10 transition-colors">
+                                <span class="block text-2xl font-serif text-gold mb-1">15 min</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">López Mateos Sur</span>
+                            </div>
+                            <div class="p-4 rounded-xl bg-off-white/50 border border-transparent hover:border-forest/10 transition-colors">
+                                <span class="block text-2xl font-serif text-gold mb-1">10 min</span>
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Hospitales</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zones Overview -->
+            <div class="max-w-7xl mx-auto px-6 mt-24">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-4xl text-forest mb-4">Zonas Cercanas</h2>
+                    <p class="text-gray-500 font-light max-w-2xl mx-auto">Lugares emblemáticos que elevan tu calidad de vida.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    {zones.map(zone => (
+                        <div class="group relative aspect-[3/4] overflow-hidden rounded-2xl">
+                            <img 
+                                src={zone.image} 
+                                alt={zone.title} 
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <div class="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <p class="text-gold text-xs font-bold tracking-widest uppercase mb-2">{zone.distance}</p>
+                                <h3 class="text-white font-serif text-3xl mb-2">{zone.title}</h3>
+                                <p class="text-white/80 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                    {zone.desc}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
 
@@ -192,12 +413,11 @@ const organizationData = {
 
         <!-- 7. STATIC FOOTER -->
         <footer class="bg-forest py-24 text-center text-white relative overflow-hidden">
-            <!-- <div class="absolute inset-0 bg-[url('/assets/grain.png')] opacity-5 mix-blend-overlay"></div> -->
             <div class="relative z-10 flex flex-col items-center">
                 <img
                     src="/assets/logo-bosques.png"
                     alt="Bosques California"
-                    class="h-24 w-auto object-contain mb-8 grayscale brightness-0 invert opacity-90"
+                    class="h-24 w-auto object-contain mb-8 opacity-90"
                 />
                 <h2 class="font-serif text-4xl md:text-5xl mb-8 tracking-wide">Inicia tu legado hoy</h2>
                 

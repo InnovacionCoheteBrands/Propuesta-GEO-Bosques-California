@@ -22,7 +22,7 @@ const Models: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           className="font-serif text-5xl md:text-7xl text-forest"
         >
-          Residencias de Autor
+          Residencias de Lujo
         </motion.h1>
       </div>
 

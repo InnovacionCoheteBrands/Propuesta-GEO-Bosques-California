@@ -54,10 +54,10 @@ const AmenitiesShowcase: React.FC = () => {
                         Amenidades Premium
                     </span>
                     <h2 className="font-serif text-5xl md:text-6xl text-forest leading-tight mb-6">
-                        Espacios que<br />Trascienden
+                        Tu Vida en<br />Equilibrio
                     </h2>
                     <p className="text-gray-600 font-light text-lg leading-relaxed max-w-sm">
-                        La mejor oferta de <strong>casas con alberca y seguridad en Tlajomulco</strong>. Un entorno diseñado para el bienestar de tu familia en el sur de la ciudad.
+                        Forma parte de una comunidad donde la tranquilidad es prioridad. Disfruta de un estilo de vida integral con amenidades exclusivas, alberca y un entorno seguro, creando el escenario ideal para el día a día de tu familia en el sur de la ciudad.
                     </p>
                 </div>
 

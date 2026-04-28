@@ -267,7 +267,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
             <div className="text-center">
               <h3 className="font-serif text-4xl text-forest mb-6">¿Quieres ver más?</h3>
               <button onClick={() => onNavigate('modelos')} className="bg-gold text-white px-12 py-4 rounded-full uppercase tracking-widest font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                Catálogo Completo
+                Ver más información
               </button>
             </div>
 
@@ -352,7 +352,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate, isIntroPlaying = false }) => {
               },
               {
                 q: "¿Qué modelos de casas están disponibles?",
-                a: "Contamos con tres modelos exclusivos: Roble A, Roble B y Secuoya. Cada uno diseñado con una estética californiana contemporánea y espacios optimizados."
+                a: "Contamos con tres modelos exclusivos: Ciprés, Roble B y Secuoya. Cada uno diseñado con una estética californiana contemporánea y espacios optimizados."
               },
               {
                 q: "¿Cuáles son las amenidades principales?",

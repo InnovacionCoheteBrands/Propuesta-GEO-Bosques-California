@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: 'Organization' | 'Product' | 'FAQPage' | 'BreadcrumbList';
+  type: 'Organization' | 'Product' | 'FAQPage' | 'BreadcrumbList' | 'RealEstateListing' | 'SingleFamilyResidence';
   data: any;
 }
 
@@ -37,6 +37,18 @@ if (type === 'Organization') {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": data
+  };
+} else if (type === 'RealEstateListing') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    ...data
+  };
+} else if (type === 'SingleFamilyResidence') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "SingleFamilyResidence",
+    ...data
   };
 }
 

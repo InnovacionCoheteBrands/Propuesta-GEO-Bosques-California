@@ -23,11 +23,16 @@ export interface ModelGalleryImage {
 export interface HouseModel {
   id: string;
   name: string;
+  price: string;
   description: string;
   specs: ModelSpec[];
   image: string;
   gallery: ModelGalleryImage[];
   bgText: string;
+  features?: {
+    pb: string[];
+    pa: string[];
+  };
 }
 
 export interface Amenity {

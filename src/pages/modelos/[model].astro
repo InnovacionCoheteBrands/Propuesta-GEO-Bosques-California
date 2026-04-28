@@ -19,24 +19,29 @@ const title = `Modelo ${model.name} | Bosques California`;
 const description = `Conoce el modelo ${model.name}, una residencia de ${model.specs[0].value} con ${model.specs[1].value} recámaras en Bosques California.`;
 
 const productData = {
-  "name": `Casa Modelo ${model.name}`,
+  "name": `Modelo ${model.name} - Bosques California`,
   "description": model.description,
-  "image": `https://propuesta-bosques-geo.replit.app${model.image}`,
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "MXN",
-    "availability": "https://schema.org/InStock",
-    "price": "3500000"
+  "image": `https://bosquescalifornia.com${model.image}`,
+  "numberOfRooms": model.specs.find(s => s.label === 'Recámaras')?.value || "3",
+  "occupancy": {
+    "@type": "Occupancy",
+    "numberOfBathroomsTotal": model.specs.find(s => s.label === 'Baños')?.value || "2.5"
   },
-  "additionalProperty": model.specs.map(spec => ({
-    "@type": "PropertyValue",
-    "name": spec.label,
-    "value": spec.value
-  }))
+  "floorSize": {
+    "@type": "QuantitativeValue",
+    "value": model.specs.find(s => s.label === 'Construcción' || s.label === 'Total')?.value.replace(' m²', ''),
+    "unitCode": "MTK"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tlajomulco de Zúñiga",
+    "addressRegion": "Jalisco",
+    "addressCountry": "MX"
+  }
 };
 ---
 
-<Schema type="Product" data={productData} />
+<Schema type="SingleFamilyResidence" data={productData} />
 
 <Layout title={title} description={description}>
     <Navbar client:load currentPage="modelos" onNavigate={() => {}} /> 
@@ -48,14 +53,41 @@ const productData = {
                  <h1 class="font-serif text-5xl md:text-7xl text-forest mb-6">{model.name}</h1>
                  <p class="text-gray-600 text-lg leading-relaxed mb-8">{model.description}</p>
                  
-                 <div class="grid grid-cols-2 gap-6 mb-8">
-                    {model.specs.map(spec => (
-                        <div class="border-l-2 border-gold pl-4">
-                            <span class="block text-xs uppercase tracking-widest text-gray-400">{spec.label}</span>
-                            <span class="block text-xl font-serif text-forest">{spec.value}</span>
-                        </div>
-                    ))}
-                 </div>
+                  <div class="grid grid-cols-2 gap-6 mb-12">
+                     {model.specs.map(spec => (
+                         <div class="border-l-2 border-gold pl-4">
+                             <span class="block text-xs uppercase tracking-widest text-gray-400">{spec.label}</span>
+                             <span class="block text-xl font-serif text-forest">{spec.value}</span>
+                         </div>
+                     ))}
+                  </div>
+
+                  {model.features && (
+                      <div class="grid grid-cols-2 gap-12 mb-12 py-8 border-y border-gray-100">
+                          <div>
+                              <h4 class="text-xs font-bold text-forest uppercase tracking-widest mb-4">Planta Baja</h4>
+                              <ul class="space-y-2">
+                                  {model.features.pb.map(feature => (
+                                      <li class="flex items-center gap-3 text-sm text-gray-500">
+                                          <div class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></div>
+                                          {feature}
+                                      </li>
+                                  ))}
+                              </ul>
+                          </div>
+                          <div>
+                              <h4 class="text-xs font-bold text-forest uppercase tracking-widest mb-4">Planta Alta</h4>
+                              <ul class="space-y-2">
+                                  {model.features.pa.map(feature => (
+                                      <li class="flex items-center gap-3 text-sm text-gray-500">
+                                          <div class="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></div>
+                                          {feature}
+                                      </li>
+                                  ))}
+                              </ul>
+                          </div>
+                      </div>
+                  )}
 
                  <a href="/contacto" class="bg-forest text-white px-8 py-4 rounded-full uppercase tracking-widest text-xs font-bold hover:bg-gold transition-colors inline-block">
                     Agendar Visita

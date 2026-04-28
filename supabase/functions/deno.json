@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "supabase_functions/": "https://deno.land/x/supabase_functions@v1.0.0/"
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true
+  }
+}

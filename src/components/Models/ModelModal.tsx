@@ -78,7 +78,10 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                         </div>
 
                         {/* Right Side: Details */}
-                        <div className="w-full md:w-2/5 p-6 md:p-10 overflow-y-auto custom-scrollbar bg-white flex flex-col justify-center">
+                        <div 
+                            className="w-full md:w-2/5 p-6 md:p-10 overflow-y-auto custom-scrollbar bg-white flex flex-col justify-center"
+                            data-lenis-prevent="true"
+                        >
                             <motion.div
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -115,15 +118,46 @@ const ModelModal: React.FC<ModelModalProps> = ({ model, onClose }) => {
                                             </div>
                                         ))}
                                     </div>
+
+                                    {/* Features List */}
+                                    {model.features && (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 pt-6 border-t border-gray-100">
+                                            <div>
+                                                <h4 className="text-xs font-bold text-forest uppercase tracking-widest mb-4">Planta Baja</h4>
+                                                <ul className="space-y-2">
+                                                    {model.features.pb.map((feature, i) => (
+                                                        <li key={i} className="flex items-center gap-3 text-sm text-gray-500">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                                                            {feature}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h4 className="text-xs font-bold text-forest uppercase tracking-widest mb-4">Planta Alta</h4>
+                                                <ul className="space-y-2">
+                                                    {model.features.pa.map((feature, i) => (
+                                                        <li key={i} className="flex items-center gap-3 text-sm text-gray-500">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                                                            {feature}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Call to Action */}
                                 <div className="space-y-4 mt-auto">
-                                    <button className="w-full bg-forest text-white px-6 py-4 rounded-xl text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold transition-all duration-700 flex items-center justify-center gap-4 group relative overflow-hidden shadow-xl shadow-forest/10">
+                                    <a 
+                                        href="/contacto"
+                                        className="w-full bg-forest text-white px-6 py-4 rounded-xl text-xs uppercase tracking-[0.3em] font-bold hover:bg-gold transition-all duration-700 flex items-center justify-center gap-4 group relative overflow-hidden shadow-xl shadow-forest/10"
+                                    >
                                         <span className="relative z-10">Agendar Recorrido</span>
                                         <ArrowRight size={16} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
                                         <div className="absolute inset-y-0 left-0 w-0 bg-gold transition-all duration-700 group-hover:w-full" />
-                                    </button>
+                                    </a>
 
                                     <div className="flex items-center justify-between text-[9px] text-gray-400 uppercase tracking-widest font-bold border-t border-gray-100 pt-4">
                                         <span>Entrega Inmediata</span>

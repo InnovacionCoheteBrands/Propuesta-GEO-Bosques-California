@@ -2,10 +2,50 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Layout/Navbar';
 import { ContactPage as ContactFormComponent } from '../components/Pages/Forms';
+import Schema from '../components/SEO/Schema.astro';
 
 const title = "Contacto | Bosques California";
 const description = "Agenda tu visita a Bosques California. Estamos listos para atenderte por WhatsApp, teléfono o en nuestras oficinas de ventas.";
+
+const localBusinessData = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Ventas Bosques California",
+  "image": "https://bosquescalifornia.com/assets/logo-bosques.png",
+  "@id": "https://bosquescalifornia.com",
+  "url": "https://bosquescalifornia.com/contacto",
+  "telephone": "+52-33-1071-0957",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. López Mateos Sur",
+    "addressLocality": "Tlajomulco de Zúñiga",
+    "addressRegion": "JAL",
+    "postalCode": "45640",
+    "addressCountry": "MX"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 20.5538244,
+    "longitude": -103.4733178
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "10:00",
+    "closes": "19:00"
+  }
+};
 ---
+
+<Schema type="Organization" data={localBusinessData} />
 
 <Layout title={title} description={description}>
     <Navbar client:load currentPage="contacto" onNavigate={() => {}} />

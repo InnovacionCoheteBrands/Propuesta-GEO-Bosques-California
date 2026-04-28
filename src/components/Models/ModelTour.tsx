@@ -44,10 +44,15 @@ const ModelTour: React.FC<ModelTourProps> = ({ gallery }) => {
                         initial={{ scale: 1, x: '0%', y: '0%' }}
                         animate={{
                             scale: 1.15,
-                            x: direction > 0 ? '-2%' : '2%',
+                            x: direction >= 0 ? '-3%' : '3%',
                             y: '-2%'
                         }}
-                        transition={{ duration: 8, ease: "linear" }}
+                        transition={{ 
+                            duration: 12, 
+                            ease: "linear",
+                            repeat: Infinity,
+                            repeatType: "reverse"
+                        }}
                         className="w-full h-full"
                     >
                         <img

@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
-  onNavigate: (pageId: string) => void;
+  onNavigate?: (pageId: string) => void;
   currentPage: string;
 }
 
@@ -27,7 +27,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const shadowClass = showSolidNav ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]';
 
   const handleNavClick = (id: string) => {
-    onNavigate(id);
+    if (onNavigate) {
+      onNavigate(id);
+    }
     setMobileMenuOpen(false);
   };
 
@@ -62,7 +64,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
           {NAV_ITEMS.map((item) => {
             let href = `/${item.id}`;
             if (item.id === 'home') href = '/';
-            if (item.id === 'refiere') href = '/refiere-y-gana';
 
             return (
               <li key={item.id}>
@@ -98,14 +99,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             {NAV_ITEMS.map((item) => {
               let href = `/${item.id}`;
               if (item.id === 'home') href = '/';
-              if (item.id === 'refiere') href = '/refiere-y-gana';
 
               return (
                 <a
                   key={item.id}
                   href={href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-xl font-serif font-medium uppercase tracking-widest ${item.isSpecial ? 'text-gold' : 'text-forest'}`}
+                  className={`text-xl font-serif font-medium uppercase tracking-widest ${item.isSpecial ? 'text-gold' : textClass} ${shadowClass}`}
                 >
                   {item.label}
                 </a>
